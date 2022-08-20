@@ -6,7 +6,7 @@ function comprar(){
 
         let madera = parseInt(prompt("Tenemos 3 opciones de madera para guitarras: \n1.Ebano, \n2.Aliso \n3.Nogal \n4.Ir a changuito \n5.Salir"));
         
-        if(madera == 1  ){
+        if(madera == 1 ){
             alert("Ebano perfecto para una Les Paul al mejor estilo Jimmy Page!");
             let cantidadUnidades = parseInt(prompt("Cuantos metros vas a llevar?"));
             let precio = cantidadUnidades * 100;
@@ -50,7 +50,8 @@ function pagoCuotas(){
         let pregunta = prompt("Desea realizar su pago en cuotas? Y o N" );
         if(pregunta == "Y"){
             let cuotas = parseInt(prompt("Puedes realizar el pago en \n3 \n6 \n12"));
-            totalCuotas = (precioTotal / cuotas) * 1.10;
+            let totalCuotas = (precioTotal / cuotas) * 1.10;
+            totalCuotas = totalCuotas.toFixed(2);
             alert("Perfecto te quedarian en " + cuotas +" cuotas de " + totalCuotas + " nos contactaremos en cuanto tengamos tu pedido listo para retirar");
             break;
         }else if(pregunta == "N"){
