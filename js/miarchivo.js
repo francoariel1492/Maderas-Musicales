@@ -46,7 +46,7 @@ function comprar(){
 }
 
 function pagoCuotas(){
-    for (let i = 0; i < 5; i++) {
+    while(true){
         let pregunta = prompt("Desea realizar su pago en cuotas? Y o N" );
         if(pregunta == "Y"){
             let cuotas = parseInt(prompt("Puedes realizar el pago en \n3 \n6 \n12"));
@@ -60,7 +60,7 @@ function pagoCuotas(){
         }else{
             alert("Elija una de las opciones disponibles")
         }
-        
+
     }
 }
 
