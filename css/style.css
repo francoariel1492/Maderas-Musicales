@@ -1,29 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+
+}
+
 body{
-    width:auto;
     background-image: url(../css/img/background.jpg);
     background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
-    color: antiquewhite;
-    font-size: 40px;
-    text-align: center;
+    color: blanchedalmond;
     font-family: 'Montserrat';
-    ;
 }
-p{
-    font-size: 30px;
-    text-align: center;
-    padding-top: 50px;
+
+.construccion{
+    background-image: url(../css/img/construccion.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center;
 
 }
+
+.escuela{
+    background-image: url(../css/img/school.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    color:aliceblue;
+}
+
+.maderas{
+    background-image: url(../css/img/maderas.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:center;
+    color:#FFE05D;
+}
+
 
 ul{
     list-style: none;
-    padding-top: 25px;
-}
-
-button{
-    width: 15%;
-    height: 2.5rem;
-    cursor:pointer;
 }
