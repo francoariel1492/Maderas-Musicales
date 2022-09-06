@@ -2,15 +2,19 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow-x: hidden
+;
 
 }
 
+h1{
+    overflow: hidden;
+}
 body{
     background-image: url(../css/img/background.jpg);
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-position: center;
+    background-size: contain;
+    background-attachment: fixed;
+    background-position: fixed;
     color: blanchedalmond;
     font-family: 'Montserrat';
 }
@@ -43,3 +47,7 @@ body{
 ul{
     list-style: none;
 }
+
+/* img{
+    transform:rotate(270deg);
+} */

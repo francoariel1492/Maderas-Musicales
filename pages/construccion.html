@@ -19,28 +19,150 @@
     <title>Maderas Musicales</title>
   </head>
   <body
-    class="construccion text-center container-fluid d-flex flex-column justify-content-center align-items-center vh-100"
+    class="construccion text-center container-fluid d-flex flex-column justify-content-center align-items-center vh-150"
   >
     <div
       data-aos="zoom-out"
       data-aos-easing="ease-out-cubic"
       data-aos-duration="2500"
     >
-      <main class="p-5">
+      <main class="row p-5 d-flex flex-column align-items-center">
         <h1 class="display-1">Construimos tu sueño</h1>
-        <p class="fs-2">
-          Nos dedicamos a construir instrumentos de calidad maxima. Dale click
-          al boton para que puedas ver lo que ofrecemos.
+        <p class="fs-2 py-5 my-5">
+          Nos dedicamos a construir instrumentos de calidad maxima. <br />
+          Elegi tu sonido:
         </p>
-        <a
-          class="btn btn-lg text-warning bg-dark"
-          id="Construccion"
-          role="button"
-          >Construccion</a
+        <div
+          class="d-flex flex-column justify-content-center align-items-center py-3"
         >
+          <a class="btn btn-lg text-warning bg-dark" id="lp" role="button"
+            >Les paul</a
+          >
+          <div class="d-none" id="lpinfo">
+            <img
+              role
+              class="w-50 my-3 py-3"
+              src="../css/img/guitarras/lespaul.png"
+              alt=""
+            />
+            <h2 class="display-2">Les Paul - Porteña</h2>
+            <p class="lead">Una versatil guitarra que brinda un sonido corposo, de peso extrañamente ligero
+              para su tipo. Elegida principalmente por los usuarios que prefieren una distorsion con mas cuerpo
+              para musica del tipo rock. El precio de la construccion es de $1000  </p>
+            <div class="d-flex flex-row justify-content-around">
+              <select
+                class="form-select form-select-md w-100 m-2 p-2"
+                aria-label="Default select example"
+                onchange="miColor()"
+                id="select"
+              >
+                <option selected >Color</option>
+                <option value="100" id="rojo">Rojo - 100</option>
+                <option value="125" id="negro">Negro - 125</option>
+                <option value="200" id="sunburst">Sunburst - 200</option>
+              </select>
+              <select
+                class="form-select form-select-md w-100 m-2 p-2"
+                aria-label="Default select example"
+                onchange="misMics()"
+                id="selectmics"
+              >
+                <option selected>Mics</option>
+                <option value="200">Simples - 200</option>
+                <option value="250">Dobles - 250</option>
+              </select>
+              
+            </div>
+            <a class="btn btn-lg text-warning bg-dark m-3 p-3" id="comprar"  role="button"
+            >Comprar</a
+          >
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column justify-content-center align-items-center py-3"
+        >
+          <a class="btn btn-lg text-warning bg-dark" id="strato" role="button"
+            >Stratocaster</a
+          >
+          <div class="d-none" id="stratinfo">
+            <img
+              role
+              class="w-50 my-3 py-3"
+              src="../css/img/guitarras/strato.png"
+              alt=""
+            />
+            <h2 class="display-2">Stratocaster - Patagonia</h2>
+            <p class="lead">Nuestro caballito de guerra, con un sonido cremoso a lo Vaughan o Hendrix
+              nuestra Patagonia a logrado brindar felicidad a mas de un guitarrista.
+            </p>
+            <div class="d-flex flex-row justify-content-around">
+              <select
+                id="color"
+                class="form-select form-select-md w-100 m-2 p-2"
+                aria-label="Default select example"
+              >
+                <option selected>Color</option>
+                <option value="rojo" id="rojo">Rojo</option>
+                <option value="negro" id="negro">Negro</option>
+                <option value="sunburst" id="sunburst">Sunburst</option>
+              </select>
+              <select
+                class="form-select form-select-md w-100 m-2 p-2"
+                aria-label="Default select example"
+              >
+                <option selected>Mics</option>
+                <option value="simples">Simples</option>
+                <option value="dobles">Dobles</option>
+              </select>
+            </div>
+            <a class="btn btn-lg text-warning bg-dark m-3 p-3" role="button"
+            >Comprar</a
+          >
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column justify-content-center align-items-center py-3"
+        >
+          <a class="btn btn-lg text-warning bg-dark" id="tele" role="button"
+            >Telecaster</a
+          >
+          <div class="d-none" id="teleinfo">
+            <img
+              role
+              class="w-50 my-3 py-3"
+              src="../css/img/guitarras/tele.png"
+              alt=""
+            />
+            <h2 class="display-2">Telecaster - Norteña</h2>
+            <p class="lead">Como toda telecaster y apunto a un sonido limpio y pulito nuestra Norteña es una 
+              eleccion comoda y economica para satisfascer una amplia gama de necesidades.
+            </p>
+            <div class="d-flex flex-row justify-content-around">
+              <select
+                class="form-select form-select-md w-100 m-2 p-2"
+                aria-label="Default select example"
+              >
+                <option selected>Color</option>
+                <option value="1">Rojo</option>
+                <option value="2">Negro</option>
+                <option value="3">Sunburst</option>
+              </select>
+              <select
+                class="form-select form-select-md w-100 m-2 p-2"
+                aria-label="Default select example"
+              >
+                <option selected>Mics</option>
+                <option value="1">Simples</option>
+                <option value="2">Dobles</option>
+              </select>
+            </div>
+            <a class="btn btn-lg text-warning bg-dark m-3 p-3" role="button"
+            >Comprar</a
+          >
+          </div>
+        </div>
       </main>
     </div>
-    <script src="../js/construccion.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
@@ -50,5 +172,6 @@
     <script>
       AOS.init();
     </script>
+    <script src="../js/construccion.js"></script>
   </body>
 </html>
