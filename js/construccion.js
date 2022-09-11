@@ -24,6 +24,72 @@ let guitarras = [
   },
 ];
 
+function mostrarTotal(event){
+  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+  let total = (guitarra.precio) + parseInt(colores.value)
+  console.log(total)
+  return total
+  
+}
+
+
+function lp(){
+    lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
+    guitarraDefault = "LP"
+    let guitarra = guitarras.find((g) => g.tipo === "LP");
+
+}
+
+function strato(){
+    stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
+    guitarraDefault = "Strato"
+    let guitarra = guitarras.find((g) => g.tipo === "Strato");
+
+}
+
+function tele(){
+    teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
+    guitarraDefault = "Tele"
+    let guitarra = guitarras.find((g) => g.tipo === "Tele");
+
+}
+
+
+function misMics(){
+  let pickup = pickups.value
+  return pickup
+}
+
+const pickups = document.getElementById('selectmics')
+const colores = document.getElementById('select')
+const rojo = document.getElementById('rojo')
+const negro = document.getElementById('negro')
+const sunburst = document.getElementById('sunburst')
+
+let guitarraDefault = "LP"
+
+
+const lpinfo = document.getElementById('lpinfo')
+const stratinfo = document.getElementById('stratinfo')
+const teleinfo = document.getElementById('teleinfo')
+
+const lespaul = document.getElementById('lp');
+const stratocaster = document.getElementById('strato');
+const telecaster = document.getElementById('tele');
+
+const comprar = document.getElementById('comprar')
+
+comprar.addEventListener('click',mostrarTotal)
+pickups.addEventListener('onchange',misMics)
+lespaul.addEventListener('click', lp);
+stratocaster.addEventListener('click', strato);
+telecaster.addEventListener('click', tele);
+
+
+
+
+
+
 //---------------FUNCIONES
 // function selectPickups() {
 //   let pickup =
@@ -129,72 +195,3 @@ let guitarras = [
 //     }
 //   }
 // }
-
-function mostrarTotal(guitarra){
-  let total = guitarra.precio + miColor()
-  return total
-}
-
-
-function lp(){
-    lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
-    let guitarra = guitarras.find((g) => g.tipo === "LP");
-    
-    mostrarTotal(guitarra)
-    
-
-    
-}
-
-function strato(){
-    stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
-    let guitarra = guitarras.find((g) => g.tipo === "Strato");
-    // guitarra.precio += (colorGuitarra(guitarra) + selectPickups());
-    // creacion.push(guitarra);
-}
-
-function tele(){
-    teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
-    let guitarra = guitarras.find((g) => g.tipo === "Tele");
-    muestra(guitarra)
-    // guitarra.precio += (colorGuitarra(guitarra) + selectPickups());
-    // creacion.push(guitarra);
-}
-
-function miColor(){
-  let color = colores.value;
-  return color;
-  
-}
-
-function misMics(){
-  let pickup = pickups.value
-  return pickup
-}
-
-const pickups = document.getElementById('selectmics')
-const colores = document.getElementById('select')
-const rojo = document.getElementById('rojo')
-const negro = document.getElementById('negro')
-const sunburst = document.getElementById('sunburst')
-
-
-
-
-
-const lpinfo = document.getElementById('lpinfo')
-const stratinfo = document.getElementById('stratinfo')
-const teleinfo = document.getElementById('teleinfo')
-
-const lespaul = document.getElementById('lp');
-const stratocaster = document.getElementById('strato');
-const telecaster = document.getElementById('tele');
-
-const comprar = document.getElementById('comprar')
-
-comprar.addEventListener('click',mostrarTotal)
-colores.addEventListener('onchange',miColor)
-pickups.addEventListener('onchange',misMics)
-lespaul.addEventListener('click', lp);
-stratocaster.addEventListener('click', strato);
-telecaster.addEventListener('click', tele);
