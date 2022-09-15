@@ -2,27 +2,31 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden
 ;
 
 }
 
-h1{
-    overflow: hidden;
-}
+
 body{
-    background-image: url(../css/img/background.jpg);
-    background-size: contain;
-    background-attachment: fixed;
-    background-position: fixed;
     color: blanchedalmond;
     font-family: 'Montserrat';
 }
 
+header div a{
+    color: blanchedalmond !important
+}
+
+.index{
+    background-image: url(../css/img/background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+
 .construccion{
     background-image: url(../css/img/construccion.jpg);
     background-size:cover;
-    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-position: center;
 
 }
@@ -30,9 +34,8 @@ body{
 .escuela{
     background-image: url(../css/img/school.jpg);
     background-size:cover;
-    background-repeat:no-repeat;
     background-position:center;
-    color:aliceblue;
+    color:blanchedalmond;
 }
 
 .maderas{
@@ -40,7 +43,7 @@ body{
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center;
-    color:#FFE05D;
+    color: blanchedalmond;
 }
 
 

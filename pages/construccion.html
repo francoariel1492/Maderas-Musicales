@@ -18,8 +18,45 @@
     <link rel="stylesheet" href="../css/style.css" />
     <title>Maderas Musicales</title>
   </head>
+  <header class="row">
+    <nav class="navbar navbar-expand-lg d-flex flex-row">
+      <div class="container-fluid">
+        <a class="navbar-brand w-25 container" href="#">
+          <img src="../css/img/logo/logo.png" class="w-50" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav container justify-content-center fs-5">
+            <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
+            <a class="nav-link active" href="#">Maderas</a>
+            <a class="nav-link active" href="#">Construccion</a>
+            <a class="nav-link active" href="#">Escuela</a>
+            
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn border-0 w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="../css/img/logo/chango.png" class="w-25" alt="">
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+              <h2 class="modal-title" id="exampleModalLabel">Tus pedidos</h2>
+              <button type="button" class="btn-close text-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-dark" id="modalContainer">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
   <body
-    class="construccion text-center container-fluid d-flex flex-column justify-content-center align-items-center vh-150"
+    class="construccion text-center container-fluid d-flex flex-column justify-content-center align-items-center"
   >
     <div
       data-aos="zoom-out"
@@ -48,32 +85,33 @@
             <h2 class="display-2">Les Paul - Porteña</h2>
             <p class="lead">Una versatil guitarra que brinda un sonido corposo, de peso extrañamente ligero
               para su tipo. Elegida principalmente por los usuarios que prefieren una distorsion con mas cuerpo
-              para musica del tipo rock. El precio de la construccion es de $1000  </p>
+              para musica del tipo rock. El precio de la construccion es de $1000</p>
             <div class="d-flex flex-row justify-content-around">
               <select
                 class="form-select form-select-md w-100 m-2 p-2"
                 aria-label="Default select example"
-                id="select"
+                id="coloresLp"
               >
-                <option selected >Color</option>
-                <option value=100 id="rojo">Rojo - 100</option>
-                <option value=125 id="negro">Negro - 125</option>
-                <option value=200 id="sunburst">Sunburst - 200</option>
+                <option selected value=0 >Color</option>
+                <option value=100 >Rojo - 100</option>
+                <option value=125>Negro - 125</option>
+                <option value=200>Sunburst - 200</option>
               </select>
               <select
                 class="form-select form-select-md w-100 m-2 p-2"
                 aria-label="Default select example"
-                id="selectmics"
+                id="pickupslp"
               >
-                <option selected>Mics</option>
+                <option selected value=0>Mics</option>
                 <option value=200>Simples - 200</option>
                 <option value=250>Dobles - 250</option>
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark m-3 p-3" id="comprar"  role="button"
+            <a class="btn btn-lg text-warning bg-dark m-3 p-3" id="comprarLp" role="button"
             >Comprar</a
           >
+          <p id="contenedorLp" class="lead" ></p>
           </div>
         </div>
         <div
@@ -91,31 +129,33 @@
             />
             <h2 class="display-2">Stratocaster - Patagonia</h2>
             <p class="lead">Nuestro caballito de guerra, con un sonido cremoso a lo Vaughan o Hendrix
-              nuestra Patagonia a logrado brindar felicidad a mas de un guitarrista.
+              nuestra Patagonia a logrado brindar felicidad a mas de un guitarrista. El precio de la construccion es de $900
             </p>
             <div class="d-flex flex-row justify-content-around">
               <select
-                id="color"
                 class="form-select form-select-md w-100 m-2 p-2"
                 aria-label="Default select example"
+                id="coloresStrato"
               >
-                <option selected>Color</option>
-                <option value="rojo" id="rojo">Rojo</option>
-                <option value="negro" id="negro">Negro</option>
-                <option value="sunburst" id="sunburst">Sunburst</option>
+                <option selected value=0>Color</option>
+                <option value=100 >Rojo - 100</option>
+                <option value=125 >Negro - 125</option>
+                <option value=200 >Sunburst - 200</option>
               </select>
               <select
                 class="form-select form-select-md w-100 m-2 p-2"
                 aria-label="Default select example"
+                id="pickupsStrato"
               >
-                <option selected>Mics</option>
-                <option value="simples">Simples</option>
-                <option value="dobles">Dobles</option>
+                <option selected value=0>Mics</option>
+                <option value=200>Simples - 200</option>
+                <option value=250>Dobles - 250</option>
               </select>
+              
             </div>
-            <a class="btn btn-lg text-warning bg-dark m-3 p-3" role="button"
-            >Comprar</a
-          >
+            <a class="btn btn-lg text-warning bg-dark m-3 p-3 " id="comprarStrato" role="button"
+            >Comprar</a>
+            <p id="contenedorStrato" class="lead" ></p>
           </div>
         </div>
         <div
@@ -133,30 +173,33 @@
             />
             <h2 class="display-2">Telecaster - Norteña</h2>
             <p class="lead">Como toda telecaster y apunto a un sonido limpio y pulito nuestra Norteña es una 
-              eleccion comoda y economica para satisfascer una amplia gama de necesidades.
+              eleccion comoda y economica para satisfascer una amplia gama de necesidades. El precio de la construccion es de $800
             </p>
             <div class="d-flex flex-row justify-content-around">
               <select
                 class="form-select form-select-md w-100 m-2 p-2"
                 aria-label="Default select example"
+                id="coloresTele"
               >
-                <option selected>Color</option>
-                <option value="1">Rojo</option>
-                <option value="2">Negro</option>
-                <option value="3">Sunburst</option>
+                <option selected value=0>Color</option>
+                <option value=100 >Rojo - 100</option>
+                <option value=125 >Negro - 125</option>
+                <option value=200 >Sunburst - 200</option>
               </select>
               <select
-                class="form-select form-select-md w-100 m-2 p-2"
+                class="form-select form-select-md w-100 m-2 p-2 "
                 aria-label="Default select example"
+                id="pickupsTele"
               >
-                <option selected>Mics</option>
-                <option value="1">Simples</option>
-                <option value="2">Dobles</option>
+                <option selected value=0>Mics</option>
+                <option value=200>Simples - 200</option>
+                <option value=250>Dobles - 250</option>
               </select>
+              
             </div>
-            <a class="btn btn-lg text-warning bg-dark m-3 p-3" role="button"
-            >Comprar</a
-          >
+            <a class="btn btn-lg text-warning bg-dark m-3 p-3 " id="comprarTele"  role="button"
+            >Comprar</a>
+            <p id="contenedorTele" class="lead" ></p>
           </div>
         </div>
       </main>

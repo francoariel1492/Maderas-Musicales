@@ -1,4 +1,5 @@
 //---------------ARRAYS
+
 let guitarras = [
   {
     tipo: "LP",
@@ -24,174 +25,120 @@ let guitarras = [
   },
 ];
 
-function mostrarTotal(event){
-  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
-  let total = (guitarra.precio) + parseInt(colores.value)
-  console.log(total)
-  return total
-  
-}
+
+let guitarraDefault = "LP";
 
 
 function lp(){
     lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "LP"
-    let guitarra = guitarras.find((g) => g.tipo === "LP");
+    console.log(guitarraDefault)
 
 }
 
 function strato(){
     stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "Strato"
-    let guitarra = guitarras.find((g) => g.tipo === "Strato");
-
+    console.log(guitarraDefault)
 }
 
 function tele(){
     teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "Tele"
-    let guitarra = guitarras.find((g) => g.tipo === "Tele");
+    console.log(guitarraDefault)
 
 }
 
 
-function misMics(){
-  let pickup = pickups.value
-  return pickup
+
+function miLp(event){
+  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+  let total = guitarra.precio + parseInt(coloresLp.value) + parseInt(pickupsLp.value)
+  let contenedorLp = document.getElementById('contenedorLp')
+  contenedorLp.innerHTML = `Tu ${guitarra.tipo}-${guitarra.nombre} estara lista en 3 meses a partir de la fecha, el precio total es de $${total}`
+  const viola1 = {tipo: guitarra.tipo, precio: total}
+  const violaJson1 = JSON.stringify(viola1)
+  sessionStorage.setItem("Item1",violaJson1)
+  console.log(violaJson1)
+  
+  return total
 }
 
-const pickups = document.getElementById('selectmics')
-const colores = document.getElementById('select')
-const rojo = document.getElementById('rojo')
-const negro = document.getElementById('negro')
-const sunburst = document.getElementById('sunburst')
 
-let guitarraDefault = "LP"
+
+function miStrato(event){
+  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+  let total = guitarra.precio + parseInt(coloresStrato.value) + parseInt(pickupsStrato.value)
+  let contenedorStrato = document.getElementById('contenedorStrato')
+  contenedorStrato.innerHTML = `Tu ${guitarra.tipo}-${guitarra.nombre} estara lista en 3 meses a partir de la fecha, el precio total es de $${total}`
+  const viola2 = {tipo: guitarra.tipo, precio: total}
+  const violaJson2 = JSON.stringify(viola2)
+  sessionStorage.setItem("Item2",violaJson2)
+  console.log(violaJson2)
+  return total
+}
+
+function miTele(event){
+  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+  let total = guitarra.precio + parseInt(coloresTele.value) + parseInt(pickupsTele.value)
+  let contenedorTele = document.getElementById('contenedorTele')
+  contenedorTele.innerHTML = `Tu ${guitarra.tipo}-${guitarra.nombre} estara lista en 3 meses a partir de la fecha, el precio total es de $${total}`
+  const viola3 = {tipo: guitarra.tipo, precio: total}
+  const violaJson3 = JSON.stringify(viola3)
+  sessionStorage.setItem("Item3",violaJson3)
+  console.log(violaJson3)
+  return total
+}
 
 
 const lpinfo = document.getElementById('lpinfo')
 const stratinfo = document.getElementById('stratinfo')
-const teleinfo = document.getElementById('teleinfo')
-
-const lespaul = document.getElementById('lp');
-const stratocaster = document.getElementById('strato');
-const telecaster = document.getElementById('tele');
-
-const comprar = document.getElementById('comprar')
-
-comprar.addEventListener('click',mostrarTotal)
-pickups.addEventListener('onchange',misMics)
-lespaul.addEventListener('click', lp);
-stratocaster.addEventListener('click', strato);
-telecaster.addEventListener('click', tele);
+const teleinfo = document.getElementById('teleinfo');
 
 
 
 
+const coloresLp = document.getElementById('coloresLp')
+const pickupsLp = document.getElementById('pickupslp')
 
+const coloresStrato = document.getElementById('coloresStrato')
+const pickupsStrato = document.getElementById('pickupsStrato')
 
-//---------------FUNCIONES
-// function selectPickups() {
-//   let pickup =
-//     prompt(`Y hablando de sonido, que tipo de microfonos vas a utilizar?
+const coloresTele = document.getElementById('coloresTele')
+const pickupsTele = document.getElementById('pickupsTele')
 
-// Simples
-// Dobles
+let modal = document.getElementById('modalContainer')
+modal.innerHTML = `<p>${sessionStorage.getItem('Item1')}
+                      ${sessionStorage.getItem('Item2')}
+                      ${sessionStorage.getItem('Item3')}</p>`
 
-// Salir`);
-//   if (pickup == "Simples") {
-//     simples = 200;
-//     return simples;
-//   } else if (pickup == "Dobles") {
-//     dobles = 250;
-//     return dobles;
-//   } else if (pickup == "Salir") {
-//     alert(
-//       "Veo que haras la instalacion de los pickups por cuenta tuya, respeto eso"
-//     );
-//     return 0;
-//   } else {
-//     alert("Desafortunadamente no tenemos esos pickups en nuestro catalogo");
-//     return selectPickups();
-//   }
-// }
-
-// function muestra(guitarra){
-//     Nombre: ${guitarra.nombre} 
-//     Sonido: ${guitarra.sonido} 
-//     Peso:   ${guitarra.peso}
-//     Precio: ${guitarra.precio};
+// function showLocalStorage(){
+//   for (let i = 0; i < sessionStorage.length; i++) {
+//     let guitar = sessionStorage.key(i)
     
-// }
-
-
-
-// function colorGuitarra(guitarra) {
-
-//  let rojo = document.getElementById("rojo")
-//  let negro = document.getElementById("negro")
-//  let sunburst = document.getElementById("sunburst")
-//  let color = document.getElementById("color")
-
-//   if (color == rojo) {
-//     precioColor = 100;
-//     console.log("bija")
-//     return precioColor;
-//   } else if (color == negro) {
-//     precioColor = 125;
-//     return precioColor;
-//   } else if (color == sunburst) {
-//     precioColor = 200;
-//     return precioColor;
-//   } else {
-//     return 0;
+//     console.log(`${guitar} - ${sessionStorage.getItem(guitar)}`) 
 //   }
 // }
 
-// function construccion() {
-//     let creacion = [];
-//     alert(
-//         "Si lo que estas buscando es tu sonido, dejame decirte que aca lo vamos a encontrar"
-//     );
-//   while (true) {
-//     let opcion = prompt(
-//       "Elige tu sonido:\n\nLP\nStrato\nTele\n \nRecuerda que el precio es solo por el valor del mueble, la electronica, pintura y accesorios de la guitarra son aparte.\n\nSalir"
-//     );
-//     if (opcion == "LP") {
-//       let guitarra = guitarras.find((g) => g.tipo === "LP");
-//       muestra(guitarra)
-//       guitarra.precio += (colorGuitarra(guitarra) + selectPickups());
-//       creacion.push(guitarra);
-//       alert(
-//         `Perfecto, el precio de tu ${guitarra.tipo} es de ${guitarra.precio} y aproximadamente estara lista en 3 meses`
-//       );break
-//     } else if (opcion == "Strato") {
 
-//       let guitarra = guitarras.find((g) => g.tipo === "Strato");
-//       muestra(guitarra)
-//       guitarra.precio += (colorGuitarra(guitarra) + selectPickups());
-      
-//       creacion.push(guitarra);
-//       console.log(creacion)
-//       alert(
-//         `Perfecto, el precio de tu ${guitarra.tipo} es de ${guitarra.precio} y aproximadamente estara lista en 3 meses`
-//       );break
-//     }else if (opcion == "Tele") {
-//       let tele = document.querySelector("#tele");
-//       tele.className = "w-50"
-//       let guitarra = guitarras.find((g) => g.tipo === "Tele");
-//       muestra(guitarra)
-//       guitarra.precio += (colorGuitarra(guitarra) + selectPickups());
-//       creacion.push(guitarra);
-//       console.log(creacion)
-//       alert(
-//         `Perfecto, el precio de tu ${guitarra.tipo} es de ${guitarra.precio} y aproximadamente estara lista en 3 meses`
-//       );break
-//     } else if (opcion == "Salir") {
-//       alert("Gracias vuelva prontos");
-//       break;
-//     } else {
-//       alert("Ingresa una de las opciones");
-//     }
-//   }
-// }
+// showLocalStorage()
+const comprarLp = document.getElementById('comprarLp');
+comprarLp.addEventListener('click', miLp)
+
+const comprarStrato = document.getElementById('comprarStrato');
+comprarStrato.addEventListener('click', miStrato)
+
+const comprarTele = document.getElementById('comprarTele');
+comprarTele.addEventListener('click', miTele)
+
+
+const lesPaul = document.getElementById('lp');
+lesPaul.addEventListener('click', lp);
+
+const stratoCaster = document.getElementById('strato');
+stratoCaster.addEventListener('click', strato);
+
+const teleCaster = document.getElementById('tele')
+teleCaster.addEventListener('click', tele);
+
+
