@@ -20,6 +20,7 @@ header div a{
     background-image: url(../css/img/background.jpg);
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
 }
 
 
@@ -35,14 +36,15 @@ header div a{
     background-image: url(../css/img/school.jpg);
     background-size:cover;
     background-position:center;
+    background-attachment: fixed;
     color:blanchedalmond;
 }
 
 .maderas{
     background-image: url(../css/img/maderas.jpg);
     background-size:cover;
-    background-repeat:no-repeat;
     background-position:center;
+    background-attachment: fixed;
     color: blanchedalmond;
 }
 
@@ -50,7 +52,3 @@ header div a{
 ul{
     list-style: none;
 }
-
-/* img{
-    transform:rotate(270deg);
-} */

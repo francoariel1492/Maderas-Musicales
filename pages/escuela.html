@@ -11,21 +11,36 @@
     <title>Maderas Musicales</title>
   </head>
   <header class="row">
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg d-flex flex-row">
       <div class="container-fluid">
-        <a class="navbar-brand w-25 container " href="#">
+        <a class="navbar-brand w-25 container" href="../index.html">
           <img src="../css/img/logo/logo.png" class="w-50" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav container justify-content-end fs-5">
-            <a class="nav-link active" aria-current="page" href="#">Nosotros</a>
-            <a class="nav-link active" href="#">Maderas</a>
-            <a class="nav-link active" href="#">Construccion</a>
-            <a class="nav-link active" href="#">Escuela</a>
+          <div class="navbar-nav container justify-content-center fs-5">
+            <a class="nav-link active" href="maderas.html">Maderas</a>
+            <a class="nav-link active" href="construccion.html">Construccion</a>
+            <a class="nav-link active" href="escuela.html">Escuela</a>
             
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn border-0 w-25" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <img src="../css/img/logo/chango.png" class="w-25" alt="">
+      </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+              <h2 class="modal-title" id="exampleModalLabel">Tus pedidos</h2>
+              <button type="button" class="btn-close text-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body bg-dark" id="modalContainer">
+              
+            </div>
           </div>
         </div>
       </div>
