@@ -112,16 +112,8 @@ modal.innerHTML = `<p>${sessionStorage.getItem('Item1')}
                       ${sessionStorage.getItem('Item2')}
                       ${sessionStorage.getItem('Item3')}</p>`
 
-// function showLocalStorage(){
-//   for (let i = 0; i < sessionStorage.length; i++) {
-//     let guitar = sessionStorage.key(i)
-    
-//     console.log(`${guitar} - ${sessionStorage.getItem(guitar)}`) 
-//   }
-// }
 
 
-// showLocalStorage()
 const comprarLp = document.getElementById('comprarLp');
 comprarLp.addEventListener('click', miLp)
 
