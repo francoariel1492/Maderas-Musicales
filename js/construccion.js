@@ -1,3 +1,33 @@
+//------------Variables
+
+const lpinfo = document.getElementById('lpinfo')
+const stratinfo = document.getElementById('stratinfo')
+const teleinfo = document.getElementById('teleinfo');
+const coloresLp = document.getElementById('coloresLp')
+const pickupsLp = document.getElementById('pickupslp')
+const coloresStrato = document.getElementById('coloresStrato')
+const pickupsStrato = document.getElementById('pickupsStrato')
+const coloresTele = document.getElementById('coloresTele')
+const pickupsTele = document.getElementById('pickupsTele')
+const comprarLp = document.getElementById('comprarLp')
+const comprarStrato = document.getElementById('comprarStrato')
+const comprarTele = document.getElementById('comprarTele');
+const lesPaul = document.getElementById('lp');
+const stratoCaster = document.getElementById('strato');
+const teleCaster = document.getElementById('tele')
+let modal = document.getElementById('modalContainer')
+let guitarraDefault = "LP";
+
+
+//------------Eventos
+
+comprarLp.addEventListener('click', miLp)
+comprarStrato.addEventListener('click', miStrato)
+comprarTele.addEventListener('click', miTele)
+lesPaul.addEventListener('click', lp);
+stratoCaster.addEventListener('click', strato);
+teleCaster.addEventListener('click', tele);
+
 //---------------ARRAYS
 
 let guitarras = [
@@ -25,31 +55,22 @@ let guitarras = [
   },
 ];
 
-
-let guitarraDefault = "LP";
-
-
+//------------Funciones
 function lp(){
     lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "LP"
     console.log(guitarraDefault)
-
 }
-
 function strato(){
     stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "Strato"
     console.log(guitarraDefault)
 }
-
 function tele(){
     teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "Tele"
     console.log(guitarraDefault)
-
 }
-
-
 
 function miLp(event){
   let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
@@ -63,8 +84,6 @@ function miLp(event){
   
   return total
 }
-
-
 
 function miStrato(event){
   let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
@@ -91,46 +110,14 @@ function miTele(event){
 }
 
 
-const lpinfo = document.getElementById('lpinfo')
-const stratinfo = document.getElementById('stratinfo')
-const teleinfo = document.getElementById('teleinfo');
 
-
-
-
-const coloresLp = document.getElementById('coloresLp')
-const pickupsLp = document.getElementById('pickupslp')
-
-const coloresStrato = document.getElementById('coloresStrato')
-const pickupsStrato = document.getElementById('pickupsStrato')
-
-const coloresTele = document.getElementById('coloresTele')
-const pickupsTele = document.getElementById('pickupsTele')
-
-let modal = document.getElementById('modalContainer')
 modal.innerHTML = `<p>${sessionStorage.getItem('Item1')}
                       ${sessionStorage.getItem('Item2')}
                       ${sessionStorage.getItem('Item3')}</p>`
 
 
 
-const comprarLp = document.getElementById('comprarLp');
-comprarLp.addEventListener('click', miLp)
-
-const comprarStrato = document.getElementById('comprarStrato');
-comprarStrato.addEventListener('click', miStrato)
-
-const comprarTele = document.getElementById('comprarTele');
-comprarTele.addEventListener('click', miTele)
 
 
-const lesPaul = document.getElementById('lp');
-lesPaul.addEventListener('click', lp);
-
-const stratoCaster = document.getElementById('strato');
-stratoCaster.addEventListener('click', strato);
-
-const teleCaster = document.getElementById('tele')
-teleCaster.addEventListener('click', tele);
 
 
