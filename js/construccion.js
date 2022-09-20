@@ -117,7 +117,11 @@ modal.innerHTML = `<p>${sessionStorage.getItem('Item1')}
 
 
 
-
+//------  FECHA
+let day = new Date()
+let hoy = [day.getDate(), day.getMonth(), day.getFullYear()]
+let hoyStr = day.toLocaleDateString()
+document.querySelector(".fecha").textContent = hoyStr
 
 
 
