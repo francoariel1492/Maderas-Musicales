@@ -1,10 +1,13 @@
+// Variables globales
+
+let muebles = []
+let precioTotal = 0
+
 // Variables - precios maderas
 let ebanoPrecio = 100
 let alisoPrecio = 120
 let nogalPrecio = 90
 let rosewoodPrecio = 120
-
-
 
 
 
@@ -33,11 +36,8 @@ let rosewoodM = document.querySelector("#rosewoodM")
 
 
 
-// Variables globales
 
-let muebles = []
-let mueblesJson = JSON.stringify(muebles)
-let precioTotal = 0
+
 
 
 
@@ -73,38 +73,26 @@ function comprar(){
     while(true){
         if(ebanoM.value > 0){
             mueble = new Mueble(muebles.length, ebanoM.name, ebanoM.value, ebanoPrecio*ebanoM.value)
+            const {tipo,medida,precio} = mueble 
             muebles.push(mueble)
-            // const muebleJson = JSON.parse(mueble)
-            // localStorage.setItem(mueble.id,mueble.tipo+mueble.precio)
         }
         if(alisoM.value > 0){
             mueble = new Mueble(muebles.length, alisoM.name, alisoM.value, alisoPrecio*alisoM.value)
             muebles.push(mueble)
-            // localStorage.setItem(mueble.id,mueble.tipo+mueble.precio)
         }
         if(nogalM.value > 0){
             mueble = new Mueble(muebles.length, nogalM.name, nogalM.value, nogalPrecio*nogalM.value)
             muebles.push(mueble)
-            // localStorage.setItem(mueble.id,mueble.tipo+mueble.precio)
         }
         if(rosewoodM.value > 0){
             mueble = new Mueble(muebles.length, rosewoodM.name, rosewoodM.value, rosewoodPrecio*rosewoodM.value)
             muebles.push(mueble)
-            // localStorage.setItem(mueble.id,mueble.tipo+mueble.precio)
         }
         break
         
 }
 
-muebles.forEach(el => {precioTotal += el.precio
-});
-const guardarLocal = (clave,valor) => {localStorage.setItem(clave,valor)};
-for (const madera of muebles) {
-    guardarLocal(madera.id, JSON.stringify(madera));
-    
-}
-;
-console.log(muebles);
+muebles.forEach(el => {precioTotal += el.precio});
 
 for (let i = 0; i < muebles.length; i++) {
     changuito.innerHTML += `<h5>${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}</h5><br>`
@@ -141,7 +129,7 @@ function calcularTotal(){
     let totalCuotas = 0
     totalCuotas = (precioTotal / cuotas.value) * 1.10
     totalCuotas = totalCuotas.toFixed(2)
-    changuito.innerHTML = `<h5>Te quedarian ${cuotas.value} de ${totalCuotas}</h5>`
+    changuito.innerHTML = `<h5>Te quedarian ${cuotas.value} de ${totalCuotas}</h5>Iniciaremos con los cortes que seleccionaste y te llamaremos cuando esten listos!`
 }
 
 
