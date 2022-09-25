@@ -1,5 +1,6 @@
 // import {login} from "./login.js";
 
+// loginBtn.addEventListener("click",login)
 // console.log(login)
 // Variables globales
 
@@ -76,6 +77,8 @@ function agregarChanguito(){
         
 }
 muebles.forEach(el => {precioTotal += el.precio});
+
+changuito.innerHTML = " ";
 
 for (let i = 0; i < muebles.length; i++) {
     changuito.innerHTML += `<h5>${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}</h5><br>`

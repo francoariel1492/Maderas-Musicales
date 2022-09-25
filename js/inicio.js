@@ -1,4 +1,4 @@
 let bienvenida = document.querySelector("#bienvenida")
 
-let cliente = JSON.stringify(sessionStorage.getItem(`cliente`))
+let cliente = sessionStorage.getItem(`cliente`)
 bienvenida.innerHTML += `Bienvenido ${cliente}`
