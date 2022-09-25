@@ -1,3 +1,6 @@
+// import {login} from "./login.js";
+
+// console.log(login)
 // Variables globales
 
 let muebles = []
@@ -20,9 +23,7 @@ document.querySelector("#span4").textContent = rosewoodPrecio
 
 
 let changuito = document.querySelector(".changuitoContainer")
-let changuitoTotal = document.querySelector(".changuitoTotal")
 let botonPagar = document.querySelector("#botonPagar")
-
 
 
 // inputs
@@ -31,18 +32,6 @@ let ebanoM = document.querySelector("#ebanoM")
 let alisoM = document.querySelector("#alisoM")
 let nogalM = document.querySelector("#nogalM")
 let rosewoodM = document.querySelector("#rosewoodM")
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Clases 
@@ -55,13 +44,9 @@ class Mueble{
     }
 }
 
-
-
 //-------Funciones
 
-
-
-function comprar(){
+function agregarChanguito(){
     Swal.fire({
         position: 'center',
         icon: 'success',
@@ -73,7 +58,6 @@ function comprar(){
     while(true){
         if(ebanoM.value > 0){
             mueble = new Mueble(muebles.length, ebanoM.name, ebanoM.value, ebanoPrecio*ebanoM.value)
-            const {tipo,medida,precio} = mueble 
             muebles.push(mueble)
         }
         if(alisoM.value > 0){
@@ -91,25 +75,31 @@ function comprar(){
         break
         
 }
-
 muebles.forEach(el => {precioTotal += el.precio});
 
 for (let i = 0; i < muebles.length; i++) {
     changuito.innerHTML += `<h5>${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}</h5><br>`
-
 }
-    
+changuito.innerHTML += `<h3>El total a pagar es $${precioTotal}</h3><br>`
 };
+
+function vaciarChanguito(){
+    vaciarBoton.className = "d-none"
+    botonPagar.className = "d-none" 
+    muebles.splice(0,muebles.length)
+    changuito.innerHTML = ` `
+    console.log(muebles)
+}
 
 
 function pagar(){
+    vaciarBoton.className = "d-none"
     botonPagar.className = "d-none"
-    changuito.innerHTML += `<h3>El total a pagar es $${precioTotal}</h3><br>
-                                 <h4>Como desea realizar el pago?</h4><br>
-                                 <div class="p-2">
-                                 <button class="btn btn-lg text-warning bg-dark p-2 m-2" id="Efectivo">Efectivo</button>
-                                 <button class="btn btn-lg text-warning bg-dark p-2 m-2" id="Tarjeta">Tarjeta</button>
-                                 </div>`
+    changuito.innerHTML += `<h4>Como desea realizar el pago?</h4><br>
+                            <div class="p-2">
+                            <button class="btn btn-lg text-warning bg-dark p-2 m-2" id="Efectivo">Efectivo</button>
+                            <button class="btn btn-lg text-warning bg-dark p-2 m-2" id="Tarjeta">Tarjeta</button>
+                            </div>`
     let efectivo = document.querySelector("#Efectivo")
     efectivo.addEventListener("click", pagoEfectivo)
     let tarjeta = document.querySelector("#Tarjeta")
@@ -148,90 +138,13 @@ function pagoTarjeta(){
 
 //------Botenes/Eventos
 
-let boton = document.querySelector("#Comprar")
-boton.addEventListener("click", comprar)
+let boton = document.querySelector("#agregarCarrito")
+boton.addEventListener("click", agregarChanguito)
 
 let pagarBoton = document.querySelector("#pagar")
 pagarBoton.addEventListener("click",pagar)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function calcularTotal(){
-//     let precioTotalChanguito = 0;
-//     for(const mueble of muebles){
-//         precioTotalChanguito += mueble.calcularPrecio()
-//     }
-//     return precioTotalChanguito;
-// }
-
-
-
-
-// function comprar(){
-
-//     while(true){
-//         let madera = 0;
-//         madera = parseInt(prompt("Tenemos 3 opciones de madera para guitarras: \n1.Ebano, \n2.Aliso \n3.Nogal \n4.Ir a changuito \n5.Salir"));
-        
-//         if(madera == 1){
-//             tipo = "Ebano";
-//             valorMadera = 100;
-//             alert(tipo + " perfecto para una Les Paul al mejor estilo Jimmy Page!");
-//             agregarMueble();
-
-//         } else if(madera == 2){
-//             tipo = "Aliso";
-//             valorMadera = 120;
-//             alert(tipo + " es la madera para la legendaria Stratocaster, la de Jimi Hendrix!");
-//             agregarMueble();
-
-//         } else if(madera == 3){
-//             tipo = "Nogal";
-//             valorMadera = 90;
-//             alert("Con el " + tipo +  " podriamos hacer una Telecaster al estilo George Harrison que te parece?");
-//             agregarMueble();
-
-//         }else if(madera == 4 && madera != true){
-//             let opcion = prompt("Deseas eliminar algun producto? Y o N");
-         
-//                 if(opcion == "Y"){
-//                     muebles.forEach(elm => {
-//                         console.log(`ID: ${elm.id }\n Tipo: ${elm.tipo} \n Medida: ${elm.medida} \n Precio: ${elm.precio} \n`);
-//                     })
-//                     let id = prompt("Ingrese el id al eliminar")
-//                     elimiarDelCarrito(id)
-//                     break;
-//                 } else if(opcion == "N"){
-//                     let changuito = muebles.map((Mueble) => (Mueble.tipo + " " + Mueble.medida + "m "  + "$" + Mueble.calcularPrecio() + "\n"));
-//                     alert("Tu compra de:" + "\n\n" + changuito.join("") + "\n" + "Es un total de: $" + calcularTotal() );
-//                     pagoCuotas();
-//                     break;
-//                 }
-//         }else if(madera == 5){
-//             alert("Gracias vualva prontos");
-//             break;
-//         }
-//         else{
-//             alert("No es posible realizar la operacion");
-//         }
-        
-//     }
-// }
-
+let vaciarBoton = document.querySelector("#vaciar")
+vaciarBoton.addEventListener("click", vaciarChanguito)
 
 

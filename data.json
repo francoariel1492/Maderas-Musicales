@@ -1,0 +1,55 @@
+[{
+    "id" : 1,
+    "curso": "Contruccion de guitarras acusticas",
+    "fecha": "Enero - Marzo",
+    "cupos": 10,
+    "precio": 1000,
+    "imagen": "acusticas.jpg"
+
+},
+
+
+{
+    "id" : 2,
+    "curso": "Contruccion de guitarras electricas",
+    "fecha": "Marzo - Mayo",
+    "cupos": 10,
+    "precio": 1250,
+    "imagen": "electrica.jpg"
+
+},
+
+
+{
+    "id" : 3,
+    "curso": "Contruccion de instrumentos de cuerdas frotadas",
+    "fecha": "Mayo - Julio",
+    "cupos": 5,
+    "precio": 1000,
+    "imagen": "frotadas.jpg"
+
+},
+
+
+{
+    "id" : 4,
+    "curso": "Contruccion de cajones de percusion",
+    "fecha": "Julio",
+    "cupos": 10,
+    "precio": 500,
+    "imagen": "cajon.jpg"
+
+},
+
+
+{
+    "id" : 5,
+    "curso": "Teoria y bases de la electronica en instrumentos electricos",
+    "fecha": "Agosto - Noviembre",
+    "cupos": 15,
+    "precio": 500,
+    "imagen": "electronica.jpg"
+
+}
+
+]
