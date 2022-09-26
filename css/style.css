@@ -23,17 +23,30 @@ header div a{
     background-attachment: fixed;
 }
 
+.inicio{
+    background-image: url(../css/img/3.jpg);
+    background-size:cover ;
+    background-position: center;
+    background-attachment: fixed;
+}
 
 .construccion{
-    background-image: url(../css/img/construccion.jpg);
+    background-image: url(../css/img/2.jpg);
     background-size:cover;
     background-attachment: fixed;
     background-position: center;
 
 }
 
+.construccion main h1, h2, p{
+    color:transparent;
+    background: linear-gradient(351deg, rgba(255,235,205,1) 0%, rgba(93,70,50,1) 50%);
+    text-shadow: 2px 2px blanchedalmond;
+    -webkit-background-clip: text;
+}
+
 .escuela{
-    background-image: url(../css/img/school.jpg);
+    background-image: url(../css/img/5.jpg);
     background-size:cover;
     background-position:center;
     background-attachment: fixed;
@@ -41,7 +54,7 @@ header div a{
 }
 
 .maderas{
-    background-image: url(../css/img/maderas.jpg);
+    background-image: url(../css/img/school.jpg);
     background-size:cover;
     background-position:center;
     background-attachment: fixed;

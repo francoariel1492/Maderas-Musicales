@@ -20,6 +20,7 @@ document.querySelector("#span2").textContent = alisoPrecio
 document.querySelector("#span3").textContent = nogalPrecio
 document.querySelector("#span4").textContent = rosewoodPrecio
 
+let modalDescuento = document.querySelector("#modalDescuento")
 
 let changuito = document.querySelector(".changuitoContainer")
 let botonPagar = document.querySelector("#botonPagar")
@@ -93,8 +94,6 @@ function vaciarChanguito(){
     console.log(muebles)
 }
 
-
-
 function pagar(){
     vaciarBoton.className = "d-none"
     botonPagar.className = "d-none"
@@ -151,3 +150,14 @@ let vaciarBoton = document.querySelector("#vaciar")
 vaciarBoton.addEventListener("click", vaciarChanguito)
 
 
+//-----Asincrono
+
+setTimeout(() => {
+    Toastify({
+        text: "Recorda que todos los miercoles nuestras maderas tienen un 25% de descuento en efectivo",
+        className: "info",
+        style: {
+          background: "linear-gradient(351deg, rgba(255,235,205,1) 0%, rgba(93,70,50,1) 50%)",
+        }
+      }).showToast();
+}, 2000);
