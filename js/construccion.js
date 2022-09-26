@@ -59,17 +59,14 @@ let guitarras = [
 function lp(){
     lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "LP"
-    console.log(guitarraDefault)
 }
 function strato(){
     stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "Strato"
-    console.log(guitarraDefault)
 }
 function tele(){
     teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
     guitarraDefault = "Tele"
-    console.log(guitarraDefault)
 }
 
 function miLp(event){
@@ -80,8 +77,6 @@ function miLp(event){
   const viola1 = {tipo: guitarra.tipo, precio: total}
   const violaJson1 = JSON.stringify(viola1)
   sessionStorage.setItem("Item1",violaJson1)
-  console.log(violaJson1)
-  
   return total
 }
 
@@ -93,7 +88,6 @@ function miStrato(event){
   const viola2 = {tipo: guitarra.tipo, precio: total}
   const violaJson2 = JSON.stringify(viola2)
   sessionStorage.setItem("Item2",violaJson2)
-  console.log(violaJson2)
   return total
 }
 
@@ -105,23 +99,22 @@ function miTele(event){
   const viola3 = {tipo: guitarra.tipo, precio: total}
   const violaJson3 = JSON.stringify(viola3)
   sessionStorage.setItem("Item3",violaJson3)
-  console.log(violaJson3)
   return total
 }
 
 
 
-modal.innerHTML = `<p>${sessionStorage.getItem('Item1')}
-                      ${sessionStorage.getItem('Item2')}
-                      ${sessionStorage.getItem('Item3')}</p>`
+// modal.innerHTML = `<p>${sessionStorage.getItem('Item1')}
+//                       ${sessionStorage.getItem('Item2')}
+//                       ${sessionStorage.getItem('Item3')}</p>`
 
 
 
-//------  FECHA
-let day = new Date()
-let hoy = [day.getDate(), day.getMonth(), day.getFullYear()]
-let hoyStr = day.toLocaleDateString()
-document.querySelector(".fecha").textContent = hoyStr
+// //------  FECHA
+// let day = new Date()
+// let hoy = [day.getDate(), day.getMonth(), day.getFullYear()]
+// let hoyStr = day.toLocaleDateString()
+// document.querySelector(".fecha").textContent = hoyStr
 
 
 

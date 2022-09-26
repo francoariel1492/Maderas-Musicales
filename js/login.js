@@ -30,7 +30,7 @@ function login(event) {
     sessionStorage.setItem("cliente", usuarioJson)
     sessionStorage.setItem("password", passwordJson)
     //hacer la movida de los clientes y compras en el session
-    window.location.href = "../inicio.html"
+    window.location.href = "inicio.html"
     return cliente
 }
 

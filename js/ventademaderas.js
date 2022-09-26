@@ -13,8 +13,6 @@ let alisoPrecio = 120
 let nogalPrecio = 90
 let rosewoodPrecio = 120
 
-
-
 // Relacion de variables con el Dom
 
 document.querySelector("#span1").textContent = ebanoPrecio
@@ -90,9 +88,11 @@ function vaciarChanguito(){
     vaciarBoton.className = "d-none"
     botonPagar.className = "d-none" 
     muebles.splice(0,muebles.length)
-    changuito.innerHTML = ` `
+    changuito.textContent = " "
+    // changuito.innerHTML = " "
     console.log(muebles)
 }
+
 
 
 function pagar(){
