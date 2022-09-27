@@ -17,36 +17,37 @@ header div a{
 }
 
 .index{
-    background-image: url(../css/img/background.jpg);
+    background-image: url(../css/img/backgrounds/index.jpg);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 .inicio{
-    background-image: url(../css/img/3.jpg);
+    background-image: url(../css/img/backgrounds/inicio.jpg);
     background-size:cover ;
     background-position: center;
     background-attachment: fixed;
 }
 
 .construccion{
-    background-image: url(../css/img/2.jpg);
+    background-image: url(../css/img/backgrounds/construccion.jpg);
     background-size:cover;
-    background-attachment: fixed;
     background-position: center;
+    background-attachment: fixed;
+    
 
 }
 
 .construccion main h1, h2, p{
     color:transparent;
     background: linear-gradient(351deg, rgba(255,235,205,1) 0%, rgba(93,70,50,1) 50%);
-    text-shadow: 2px 2px blanchedalmond;
+    text-shadow: 1px 1px blanchedalmond;
     -webkit-background-clip: text;
 }
 
 .escuela{
-    background-image: url(../css/img/5.jpg);
+    background-image: url(../css/img/backgrounds/escuela.jpg);
     background-size:cover;
     background-position:center;
     background-attachment: fixed;
@@ -54,7 +55,7 @@ header div a{
 }
 
 .maderas{
-    background-image: url(../css/img/school.jpg);
+    background-image: url(../css/img/backgrounds/maderas.jpg);
     background-size:cover;
     background-position:center;
     background-attachment: fixed;
@@ -65,3 +66,8 @@ header div a{
 ul{
     list-style: none;
 }
+
+
+.animate__animated.animate__fadeIn {
+    --animate-duration: 3s;
+  }

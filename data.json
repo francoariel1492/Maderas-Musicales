@@ -22,7 +22,7 @@
 
 {
     "id" : 3,
-    "curso": "Contruccion de instrumentos de cuerdas frotadas",
+    "curso": "Contruccion de inst cuerdas frotadas",
     "fecha": "Mayo - Julio",
     "cupos": 5,
     "precio": 1000,
@@ -33,8 +33,8 @@
 
 {
     "id" : 4,
-    "curso": "Contruccion de cajones de percusion",
-    "fecha": "Julio",
+    "curso": "Contruccion de cajones",
+    "fecha": "Julio - Agosto",
     "cupos": 10,
     "precio": 500,
     "imagen": "cajon.jpg"
@@ -44,7 +44,7 @@
 
 {
     "id" : 5,
-    "curso": "Teoria y bases de la electronica en instrumentos electricos",
+    "curso": "Teoria y bases de la electronica",
     "fecha": "Agosto - Noviembre",
     "cupos": 15,
     "precio": 500,

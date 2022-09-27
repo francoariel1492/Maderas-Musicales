@@ -34,6 +34,7 @@ function login(event) {
     return cliente
 }
 
+
 loginBtn.addEventListener("click",login)
 
 export {login}

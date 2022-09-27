@@ -1,13 +1,10 @@
-// import {login} from "./login.js";
-
-// loginBtn.addEventListener("click",login)
-// console.log(login)
 // Variables globales
 
 let muebles = []
 let precioTotal = 0
 
 // Variables - precios maderas
+
 let ebanoPrecio = 100
 let alisoPrecio = 120
 let nogalPrecio = 90
@@ -47,6 +44,9 @@ class Mueble{
 //-------Funciones
 
 function agregarChanguito(){
+    botonPagar.className = "p-2";
+    vaciarBoton.className = "p-2";
+    
     Swal.fire({
         position: 'center',
         icon: 'success',
@@ -71,6 +71,9 @@ function agregarChanguito(){
         if(rosewoodM.value > 0){
             mueble = new Mueble(muebles.length, rosewoodM.name, rosewoodM.value, rosewoodPrecio*rosewoodM.value)
             muebles.push(mueble)
+        }else if(muebles == 0){
+            alert("eeewachooo")
+            break
         }
         break
         
@@ -90,8 +93,6 @@ function vaciarChanguito(){
     botonPagar.className = "d-none" 
     muebles.splice(0,muebles.length)
     changuito.textContent = " "
-    // changuito.innerHTML = " "
-    console.log(muebles)
 }
 
 function pagar(){
@@ -146,7 +147,7 @@ boton.addEventListener("click", agregarChanguito)
 let pagarBoton = document.querySelector("#pagar")
 pagarBoton.addEventListener("click",pagar)
 
-let vaciarBoton = document.querySelector("#vaciar")
+let vaciarBoton = document.querySelector("#botonVaciar")
 vaciarBoton.addEventListener("click", vaciarChanguito)
 
 
@@ -154,10 +155,10 @@ vaciarBoton.addEventListener("click", vaciarChanguito)
 
 setTimeout(() => {
     Toastify({
-        text: "Recorda que todos los miercoles nuestras maderas tienen un 25% de descuento en efectivo",
+        text: "Se acerca el BLACK FRIDAY 25% OFF en todas nuestras maderas",
         className: "info",
         style: {
-          background: "linear-gradient(351deg, rgba(255,235,205,1) 0%, rgba(93,70,50,1) 50%)",
+          background: "rgba(93,70,50,1)",
         }
       }).showToast();
 }, 2000);
