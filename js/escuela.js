@@ -18,3 +18,14 @@ fetch("../data.json")
     }
 });
 
+//-----Asincrono
+
+setTimeout(() => {
+  Toastify({
+      text: "LUTHIER-BECA 75% OFF, CONTACTANOS PARA MAS INFORMACION",
+      className: "info",
+      style: {
+      background: "rgba(93,70,50,1)",
+      }
+  }).showToast();
+}, 2000);

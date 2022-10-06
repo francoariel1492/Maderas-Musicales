@@ -1,91 +1,98 @@
-// Variables globales
+//----------Import  de la clase Mueble
+import {Mueble} from "../classes/clases.js"
 
-let muebles = []
-let precioTotal = 0
+//---------- LLamo el uusario del localStorage
 
-// Variables - precios maderas
+let misClientesLocal = JSON.parse(localStorage.getItem("misclientes"))
+let usuarioElegido = misClientesLocal.find(el => el.usuario == JSON.parse(localStorage.getItem("usuarioBienvenida")))
 
-let ebanoPrecio = 100
-let alisoPrecio = 120
-let nogalPrecio = 90
-let rosewoodPrecio = 120
+//---------- Variables globales
 
-// Relacion de variables con el Dom
+let muebles = [];
+let mueble;
+let precioTotal = 0;
+let totalCuotas = 0;
+let precioConInteres = 0;
 
-document.querySelector("#span1").textContent = ebanoPrecio
-document.querySelector("#span2").textContent = alisoPrecio
-document.querySelector("#span3").textContent = nogalPrecio
-document.querySelector("#span4").textContent = rosewoodPrecio
+//precios maderas
 
-let modalDescuento = document.querySelector("#modalDescuento")
+let ebanoPrecio = 100;
+let alisoPrecio = 120;
+let nogalPrecio = 90;
+let rosewoodPrecio = 120;
 
-let changuito = document.querySelector(".changuitoContainer")
-let botonPagar = document.querySelector("#botonPagar")
+//----------Relacion de variables con el Dom
 
-
-// inputs
-
-let ebanoM = document.querySelector("#ebanoM")
-let alisoM = document.querySelector("#alisoM")
-let nogalM = document.querySelector("#nogalM")
-let rosewoodM = document.querySelector("#rosewoodM")
+document.querySelector("#span1").textContent = ebanoPrecio;
+document.querySelector("#span2").textContent = alisoPrecio;
+document.querySelector("#span3").textContent = nogalPrecio;
+document.querySelector("#span4").textContent = rosewoodPrecio;
 
 
-// Clases 
-class Mueble{
-    constructor(id, tipo, medida, precio){
-        this.id = id + 1;
-        this.tipo = tipo;
-        this.medida = medida;
-        this.precio = precio;
-    }
-}
+let changuito = document.querySelector(".changuitoContainer");
+let botonPagar = document.querySelector("#botonPagar");
 
-//-------Funciones
 
-function agregarChanguito(){
-    botonPagar.className = "p-2";
-    vaciarBoton.className = "p-2";
-    
-    Swal.fire({
+//----------Inputs
+
+let ebanoM = document.querySelector("#ebanoM");
+let alisoM = document.querySelector("#alisoM");
+let nogalM = document.querySelector("#nogalM");
+let rosewoodM = document.querySelector("#rosewoodM");
+
+
+//----------Funciones
+
+function checkInputs(){
+    ebanoM.value == 0 && alisoM.value == 0 && nogalM.value == 0 && rosewoodM.value == 0
+    ? Toastify({
+        text: "Ingresa una cantidad porfavor",
+        className: "info",
+        style: {
+        background: "#FF0000",
+        }
+    }).showToast()
+    :   Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Tus elementos fueron agregados al carrito',
         showConfirmButton: false,
         timer: 1600})
-        
-    let mueble
+}
+
+function agregarChanguito(){
+    botonPagar.className = "p-2";
+    vaciarBoton.className = "p-2";
     while(true){
         if(ebanoM.value > 0){
             mueble = new Mueble(muebles.length, ebanoM.name, ebanoM.value, ebanoPrecio*ebanoM.value)
+            precioTotal += mueble.precio;
             muebles.push(mueble)
         }
         if(alisoM.value > 0){
             mueble = new Mueble(muebles.length, alisoM.name, alisoM.value, alisoPrecio*alisoM.value)
+            precioTotal += mueble.precio;
             muebles.push(mueble)
         }
         if(nogalM.value > 0){
             mueble = new Mueble(muebles.length, nogalM.name, nogalM.value, nogalPrecio*nogalM.value)
+            precioTotal += mueble.precio;
             muebles.push(mueble)
         }
         if(rosewoodM.value > 0){
             mueble = new Mueble(muebles.length, rosewoodM.name, rosewoodM.value, rosewoodPrecio*rosewoodM.value)
+            precioTotal += mueble.precio;
             muebles.push(mueble)
-        }else if(muebles == 0){
-            alert("eeewachooo")
-            break
         }
         break
-        
 }
-muebles.forEach(el => {precioTotal += el.precio});
-
+checkInputs()
 changuito.innerHTML = " ";
 
 for (let i = 0; i < muebles.length; i++) {
-    changuito.innerHTML += `<h5>${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}</h5><br>`
+    changuito.innerHTML += `<h6>${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}</h6>`
 }
-changuito.innerHTML += `<h3>El total a pagar es $${precioTotal}</h3><br>`
+changuito.innerHTML += `<h3 class="pt-3">El total a pagar es $${precioTotal}</h3><br>`
 };
 
 function vaciarChanguito(){
@@ -107,6 +114,7 @@ function pagar(){
     efectivo.addEventListener("click", pagoEfectivo)
     let tarjeta = document.querySelector("#Tarjeta")
     tarjeta.addEventListener("click", pagoTarjeta)
+    
 }
 
 function pagoEfectivo(){
@@ -116,12 +124,20 @@ function pagoEfectivo(){
         title: 'Perfecto iniciaremos con los cortes que seleccionaste, te pedimos que te acerques a nuestro taller para hacer el pago en efectivo seleccionado',
         showConfirmButton: false,
         timer: 5000})
+    usuarioElegido.maderas = muebles
+    usuarioElegido.total = precioTotal
+    misClientesLocal.splice('usuarioElegido.id','usuario.id')
+    localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
 }
 
 function calcularTotal(){
-    let totalCuotas = 0
     totalCuotas = (precioTotal / cuotas.value) * 1.10
+    precioConInteres = precioTotal * 1.10
     totalCuotas = totalCuotas.toFixed(2)
+    usuarioElegido.maderas = muebles
+    usuarioElegido.totalConInteres = precioConInteres.toFixed(2)
+    misClientesLocal.splice('usuarioElegido.id','usuario.id')
+    localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
     changuito.innerHTML = `<h5>Te quedarian ${cuotas.value} de ${totalCuotas}</h5>Iniciaremos con los cortes que seleccionaste y te llamaremos cuando esten listos!`
 }
 
@@ -135,7 +151,6 @@ function pagoTarjeta(){
     calcular.addEventListener("click", calcularTotal)
     let cuotas = document.getElementById("cuotas");
     return cuotas.value
-    
 }
 
 
@@ -158,7 +173,7 @@ setTimeout(() => {
         text: "Se acerca el BLACK FRIDAY 25% OFF en todas nuestras maderas",
         className: "info",
         style: {
-          background: "rgba(93,70,50,1)",
+        background: "rgba(93,70,50,1)",
         }
-      }).showToast();
+    }).showToast();
 }, 2000);

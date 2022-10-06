@@ -6,9 +6,8 @@
 
 }
 
-
 body{
-    color: blanchedalmond;
+    color: #ffebcd;
     font-family: 'Montserrat';
 }
 
@@ -35,8 +34,6 @@ header div a{
     background-size:cover;
     background-position: center;
     background-attachment: fixed;
-    
-
 }
 
 .construccion main h1, h2, p{
@@ -70,4 +67,4 @@ ul{
 
 .animate__animated.animate__fadeIn {
     --animate-duration: 3s;
-  }
+}

@@ -1,22 +1,32 @@
+//----- LLamo el uusario del localStorage
+
+let misClientesLocal = JSON.parse(localStorage.getItem("misclientes"))
+let usuarioElegido = misClientesLocal.find(el => el.usuario == JSON.parse(localStorage.getItem("usuarioBienvenida")))
+
 //------------Variables
 
-const lpinfo = document.getElementById('lpinfo');
-const stratinfo = document.getElementById('stratinfo');
-const teleinfo = document.getElementById('teleinfo');
-const coloresLp = document.getElementById('coloresLp');
-const pickupsLp = document.getElementById('pickupslp');
-const coloresStrato = document.getElementById('coloresStrato');
-const pickupsStrato = document.getElementById('pickupsStrato');
-const coloresTele = document.getElementById('coloresTele');
-const pickupsTele = document.getElementById('pickupsTele');
-const comprarLp = document.getElementById('comprarLp');
-const comprarStrato = document.getElementById('comprarStrato');
-const comprarTele = document.getElementById('comprarTele');
-const lesPaul = document.getElementById('lp');
-const stratoCaster = document.getElementById('strato');
-const teleCaster = document.getElementById('tele');
+const lpinfo = document.querySelector('#lpinfo');
+const stratinfo = document.querySelector('#stratinfo');
+const teleinfo = document.querySelector('#teleinfo');
+const coloresLp = document.querySelector('#coloresLp');
+const pickupsLp = document.querySelector('#pickupslp');
+const coloresStrato = document.querySelector('#coloresStrato');
+const pickupsStrato = document.querySelector('#pickupsStrato');
+const coloresTele = document.querySelector('#coloresTele');
+const pickupsTele = document.querySelector('#pickupsTele');
+const comprarLp = document.querySelector('#comprarLp');
+const comprarStrato = document.querySelector('#comprarStrato');
+const comprarTele = document.querySelector('#comprarTele');
+const lesPaul = document.querySelector('#lp');
+const stratoCaster = document.querySelector('#strato');
+const teleCaster = document.querySelector('#tele');
 
-let guitarraDefault = "LP";
+
+
+let guitarraDefault;
+let guitarra
+let total
+let precioFinal = 0
 
 
 //------------Eventos
@@ -29,7 +39,7 @@ stratoCaster.addEventListener('click', strato);
 teleCaster.addEventListener('click', tele);
 
 //---------------ARRAYS
-
+let guitarrasCompradas = []
 let guitarras = [
   {
     tipo: "LP",
@@ -56,48 +66,80 @@ let guitarras = [
 ];
 
 //------------Funciones
+
 function lp(){
     lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
-    guitarraDefault = "LP"
+
 }
+
 function strato(){
     stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
-    guitarraDefault = "Strato"
+    
 }
+
 function tele(){
     teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center"
-    guitarraDefault = "Tele"
+    
 }
 
-function miLp(event){
-  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+function miLp(){
+  guitarraDefault = "LP"
+  guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
   let total = guitarra.precio + parseInt(coloresLp.value) + parseInt(pickupsLp.value)
-  let contenedorLp = document.getElementById('contenedorLp')
-  contenedorLp.innerHTML = `Tu ${guitarra.tipo}-${guitarra.nombre} estara lista en 3 meses a partir de la fecha, el precio total es de $${total}`
-  const viola1 = {tipo: guitarra.tipo, precio: total}
-  const violaJson1 = JSON.stringify(viola1)
-  sessionStorage.setItem("Item1",violaJson1)
-  return total
+  guitarra.precio = total
+  guitarrasCompradas.push(guitarra)
+  usuarioElegido.guitarras = guitarrasCompradas
+  misClientesLocal.splice('usuarioElegido.id','usuario.id')
+  localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
+  Toastify({
+    text: `Comenzaremos con la construccion de tu ${guitarra.tipo}-${guitarra.nombre}`,
+    className: "info",
+    style: {
+    background: "#38E54D",
+    color: "#000000",
+    }
+  }).showToast()
+
 }
 
-function miStrato(event){
-  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+function miStrato(){
+  guitarraDefault = "Strato"
+  guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
   let total = guitarra.precio + parseInt(coloresStrato.value) + parseInt(pickupsStrato.value)
-  let contenedorStrato = document.getElementById('contenedorStrato')
-  contenedorStrato.innerHTML = `Tu ${guitarra.tipo}-${guitarra.nombre} estara lista en 3 meses a partir de la fecha, el precio total es de $${total}`
-  const viola2 = {tipo: guitarra.tipo, precio: total}
-  const violaJson2 = JSON.stringify(viola2)
-  sessionStorage.setItem("Item2",violaJson2)
-  return total
+  guitarra.precio = total
+  guitarrasCompradas.push(guitarra)
+  usuarioElegido.guitarras = guitarrasCompradas
+  misClientesLocal.splice('usuarioElegido.id','usuario.id')
+  localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
+  Toastify({
+    text: `Comenzaremos con la construccion de tu ${guitarra.tipo}-${guitarra.nombre}`,
+    className: "info",
+    style: {
+    background: "#38E54D",
+    color: "#000000",
+    }
+  }).showToast()
 }
 
-function miTele(event){
-  let guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
+function miTele(){
+  guitarraDefault = "Tele"
+  guitarra = guitarras.find((g) => g.tipo === guitarraDefault);
   let total = guitarra.precio + parseInt(coloresTele.value) + parseInt(pickupsTele.value)
-  let contenedorTele = document.getElementById('contenedorTele')
-  contenedorTele.innerHTML = `Tu ${guitarra.tipo}-${guitarra.nombre} estara lista en 3 meses a partir de la fecha, el precio total es de $${total}`
-  const viola3 = {tipo: guitarra.tipo, precio: total}
-  const violaJson3 = JSON.stringify(viola3)
-  sessionStorage.setItem("Item3",violaJson3)
-  return total
+  guitarra.precio = total
+  guitarrasCompradas.push(guitarra)
+  usuarioElegido.guitarras = guitarrasCompradas
+  misClientesLocal.splice('usuarioElegido.id','usuario.id')
+  localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
+  Toastify({
+    text: `Comenzaremos con la construccion de tu ${guitarra.tipo}-${guitarra.nombre}`,
+    className: "info",
+    style: {
+    background: "#38E54D",
+    color: "#000000",
+    }
+  }).showToast()
 }
+
+
+
+

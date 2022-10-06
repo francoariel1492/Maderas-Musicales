@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -23,7 +24,7 @@
     <title>Maderas Musicales</title>
   </head>
   <body class="escuela text-center">
-    <header class="row">
+    <header class="row p-3 m-3">
       <nav class="navbar navbar-expand-md px-3">
         <!-- <div class="container-fluid"> -->
         <a
@@ -88,13 +89,45 @@
       data-aos-easing="ease-in-back"
       data-aos-delay="300"
       data-aos-offset="0"
-      class="row"
+      class="row justify-content-center"
     >
       <h1 class="display-1">Escuela de lutheria 2022</h1>
-      <div class="row justify-content-center" id="cursos">
+      <div class="row justify-content-center py-5" id="cursos">
+      </div>
+      <div class="row pt-5">
+        <h2 class="display-1 py-2">Contactanos</h2>
+        <form class="d-flex flex-column align-items-center justify-content-center" action="https://formsubmit.co/francoariel1492@gmail.com" method="POST">
+          <div class="col-sm-3">
+            <label for="fname" class="form-label">Nombre Completo</label>
+            <input type="text" name="Nombre" class="form-control" id="inputAddress" placeholder="">
+          </div>
+          <div class="col-sm-3">
+            <label for="inputEmail4" class="form-label">Email</label>
+            <input type="email" name="Email" class="form-control" id="inputEmail4">
+          </div>
+          <div class="col-sm-3">
+            <label for="inputState" class="form-label">Curso</label>
+            <select id="inputState" name="Curso" class="form-select">
+              <eoption selected></eoption>
+              <option>Guitarras Acusticas</option>
+              <option>Guitarras Electricas</option>
+              <option>Cuerdas Frotadas</option>
+              <option>Cajones de percusion</option>
+              <option>Teoria de la electronica</option>
+            </select>
+          </div>
+          <div class="form-floating col-sm-4 py-3 my-3" >
+            <textarea class="form-control"  name="Comentarios" id="floatingTextarea2" style="height: 250px"></textarea>
+          </div>
+          <div class="py-2 pb-5">
+            <button type="submit" class="btn btn-lg text-warning bg-dark ">Enviar</button>
+          </div>
+          <input type="hidden" name="_next" value="">
+          <input type="hidden" name="_captcha" value="false">
+        </form>
       </div>
     </main>
-    <script type="module" src="../js/escuela.js"></script>
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
@@ -104,5 +137,7 @@
     <script>
       AOS.init();
     </script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script type="module" src="../js/escuela.js"></script>
   </body>
 </html>

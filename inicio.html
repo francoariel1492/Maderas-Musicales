@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="css/style.css" />
     <title>Maderas Musicales</title>
   </head>
-  <body class="inicio text-center p-1 m-1">
+  <body class="inicio text-center justify-content-center">
     <header class="row">
       <nav class="d-flex flex-column flex-sm-row navbar px-3">
         <a
@@ -30,18 +30,46 @@
         >
           <img src="css/img/logo/logo.png" class="img-fluid w-50" alt="" />
         </a>
+        <div class="d-flex flex-column">
         <h5 id="bienvenida"></h5>
+        <a
+        type="button" 
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal" id="orders" class="text-warning py-2">Tus ordenes</a>
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header bg-secondary">
+              <h2 class="modal-title" id="exampleModalLabel">Tus ordenes</h2>
+              <button
+                type="button"
+                class="btn-close text-warning"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body bg-dark" id="modalContainer"></div>
+          </div>
+        </div>
+      </div>
+        <a class="text-warning" href="./index.html" id="cierreSesion">Cerrar sesion</a>
+        </div>
       </nav>
     </header>
     <main class="row animate__animated animate__fadeIn">
-      <h1 class="display-1 py-2">Bienvenido a maderas musicales</h1>
+      <h1 class="display-1 py-2">Trabajo - Arte - Pasion</h1>
       <p class="fs-3 py-5">
-        Nuestra pasion es la de construir instrumentos a "gusto e piacere" de
+        Nuestro deber es el de construir instrumentos a "gusto e piacere" de
         los musicos que estan buscando un sonido mas personal que hoy en dia no
         pueden encontrar en las grandes marcas que se encuentran en el mercado.
-        Dentro de nuestro taller tambien realizamos ventas de maderas para otros
-        colegas o talleres amigos, y el proximo año inaguraremos nuestra escuela
-        de lutheria para formar alumnos en el arte de crear instrumentos.
+        Dentro de nuestro taller tambien realizamos ventas de maderas para
+        colegas y estudiantes de nuestra escuela de lutheria que comenzara el proximo año.
       </p>
       <div class="row ">
         <div class="d-flex flex-column flex-sm-row justify-content-center">
@@ -71,6 +99,6 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
-    <script type="module" src="js/inicio.js"></script>
+    <script type="module" src="js/inicio.js" type="module"></script>
   </body>
 </html>
