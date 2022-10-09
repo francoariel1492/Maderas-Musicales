@@ -65,23 +65,27 @@ function agregarChanguito(){
     vaciarBoton.className = "p-2";
     while(true){
         if(ebanoM.value > 0){
-            mueble = new Mueble(muebles.length, ebanoM.name, ebanoM.value, ebanoPrecio*ebanoM.value)
-            precioTotal += mueble.precio;
+            mueble = new Mueble(muebles.length, ebanoM.name, ebanoM.value, ebanoPrecio)
+            precioTotal += mueble.calcularPrecio();
+            mueble.precio = mueble.calcularPrecio();
             muebles.push(mueble)
         }
         if(alisoM.value > 0){
-            mueble = new Mueble(muebles.length, alisoM.name, alisoM.value, alisoPrecio*alisoM.value)
-            precioTotal += mueble.precio;
+            mueble = new Mueble(muebles.length, alisoM.name, alisoM.value, alisoPrecio)
+            precioTotal += mueble.calcularPrecio();
+            mueble.precio = mueble.calcularPrecio();
             muebles.push(mueble)
         }
         if(nogalM.value > 0){
-            mueble = new Mueble(muebles.length, nogalM.name, nogalM.value, nogalPrecio*nogalM.value)
-            precioTotal += mueble.precio;
+            mueble = new Mueble(muebles.length, nogalM.name, nogalM.value, nogalPrecio,)
+            precioTotal += mueble.calcularPrecio();
+            mueble.precio = mueble.calcularPrecio();
             muebles.push(mueble)
         }
         if(rosewoodM.value > 0){
-            mueble = new Mueble(muebles.length, rosewoodM.name, rosewoodM.value, rosewoodPrecio*rosewoodM.value)
-            precioTotal += mueble.precio;
+            mueble = new Mueble(muebles.length, rosewoodM.name, rosewoodM.value, rosewoodPrecio)
+            precioTotal += mueble.calcularPrecio();
+            mueble.precio = mueble.calcularPrecio();
             muebles.push(mueble)
         }
         break
@@ -114,7 +118,6 @@ function pagar(){
     efectivo.addEventListener("click", pagoEfectivo)
     let tarjeta = document.querySelector("#Tarjeta")
     tarjeta.addEventListener("click", pagoTarjeta)
-    
 }
 
 function pagoEfectivo(){
@@ -125,8 +128,8 @@ function pagoEfectivo(){
         showConfirmButton: false,
         timer: 5000})
     usuarioElegido.maderas = muebles
-    usuarioElegido.total = precioTotal
-    misClientesLocal.splice('usuarioElegido.id','usuario.id')
+    usuarioElegido.maderasPrecios = precioTotal
+    usuarioElegido.total += precioTotal
     localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
 }
 
@@ -135,7 +138,8 @@ function calcularTotal(){
     precioConInteres = precioTotal * 1.10
     totalCuotas = totalCuotas.toFixed(2)
     usuarioElegido.maderas = muebles
-    usuarioElegido.totalConInteres = precioConInteres.toFixed(2)
+    usuarioElegido.maderasPrecios = precioConInteres
+    usuarioElegido.total += parseFloat(precioConInteres.toFixed(2))
     misClientesLocal.splice('usuarioElegido.id','usuario.id')
     localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
     changuito.innerHTML = `<h5>Te quedarian ${cuotas.value} de ${totalCuotas}</h5>Iniciaremos con los cortes que seleccionaste y te llamaremos cuando esten listos!`
@@ -152,6 +156,7 @@ function pagoTarjeta(){
     let cuotas = document.getElementById("cuotas");
     return cuotas.value
 }
+
 
 
 //------Botenes/Eventos

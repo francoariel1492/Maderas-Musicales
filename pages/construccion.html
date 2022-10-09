@@ -54,35 +54,44 @@
       </div>
       <!-- </div> -->
       <button
-        type="button"
-        class="col-3 col-sm-2 col-md-2 col-lg-1 btn border-0 w-25"
-        data-bs-toggle="modal"
-        data-bs-target="#exampleModal"
-      >
-        <img src="../css/img/logo/chango.png" class="img-fluid col-md-6 col-lg-3" alt="" />
-      </button>
-      <div
-        class="modal fade"
-        id="exampleModal"
-        tabindex="-1"
-        aria-labelledby="exampleModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header bg-secondary">
-              <h2 class="modal-title" id="exampleModalLabel">Tus pedidos</h2>
-              <button
-                type="button"
-                class="btn-close text-warning"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+      type="button"
+      class="col-3 col-sm-2 col-md-2 col-lg-1 btn border-0 w-25"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+      
+    >
+      <img src="../css/img/logo/chango.png"  class="img-fluid col-md-6 col-lg-3" alt="" />
+    </button>
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary">
+            <h2 class="modal-title" id="exampleModalLabel">Tus pedidos</h2>
+            <button
+              type="button"
+              class="btn-close text-warning"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body bg-dark" id="modalContainer">
+            <div id="changuitoContainer" class=" container-fluid d-flex flex-column text-center justify-content-center align-items-center"></div>
+            <div class="p-2" id="botonPagar">
+              <button class="btn btn-lg text-warning bg-dark p-2 m-2" id="pagar">PAGAR</button>
             </div>
-            <div class="modal-body bg-dark" id="modalContainer"></div>
+            <div class="p-2" id="botonVaciar">
+              <button class="btn btn-lg text-warning bg-dark p-2 m-2" id="vaciar">VACIAR CHANGUITO</button>
+            </div>
           </div>
         </div>
       </div>
+    </div>
     </nav>
   </header>
       <main class="row py-5 d-flex flex-column justify-content-center">
@@ -131,7 +140,7 @@
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark" id="comprarLp" role="button"
+            <a class="btn btn-lg text-warning bg-dark agregarCarrito" id="comprarLp" role="button"
             >Comprar</a
           >
           <p class="lead" ></p>
@@ -176,7 +185,7 @@
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark" id="comprarStrato" role="button"
+            <a class="btn btn-lg text-warning bg-dark agregarCarrito" id="comprarStrato" role="button"
             >Comprar</a>
             <p class="lead" ></p>
           </div>
@@ -220,7 +229,7 @@
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark" id="comprarTele"  role="button"
+            <a class="btn btn-lg text-warning bg-dark agregarCarrito" id="comprarTele"  role="button"
             >Comprar</a>
             <p class="lead" ></p>
           </div>
@@ -231,6 +240,7 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script type="module" src="../js/construccion.js"></script>
   </body>

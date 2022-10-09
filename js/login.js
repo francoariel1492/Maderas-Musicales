@@ -9,11 +9,11 @@ let inputPassword = document.querySelector("#inputPassword")
 let formLogIn = document.querySelector("#formLogIn")
 let formRegistro = document.querySelector("#formRegistro")
 let inputUsuarioRegistro = document.querySelector("#inputUsuarioRegistro")
+let inputEmailRegistro = document.querySelector("#inputEmailRegistro")
 let inputPasswordRegistro = document.querySelector("#inputPasswordRegistro")
 let inputConfirmPassword = document.querySelector("#confirmPassword")
 
 let user
-let clientes = []
 
 //--------Funciones
 
@@ -25,21 +25,22 @@ function signIn(event){
 }
 
 function login(){
-    if(inputUsuario.value && inputPassword.value){
     let misClientesLocal = JSON.parse(localStorage.getItem("misclientes"))
-    let usersDelLocal = misClientesLocal.map(function(el){return el.usuario})
-    let passDelLocal = misClientesLocal.map(function(el){return el.password})
-    let usuarioEncontrado = usersDelLocal.find(el => el == inputUsuario.value)
-    let passwordEncontrado = passDelLocal.find(el => el == inputPassword.value)
-    inputUsuario.value == usuarioEncontrado && inputPassword.value == passwordEncontrado
-    ?(window.location.href = "../inicio.html") && localStorage.setItem("usuarioBienvenida", JSON.stringify(usuarioEncontrado))
-    :Toastify({
-        text: "Algo salio mal, intenta nuevamente",
-        className: "info",
-        style: {
-        background: "#FF0000",
+    if(inputUsuario.value && inputPassword.value && misClientesLocal ){
+
+        let usuarioEncontrado = misClientesLocal.find(el => el.usuario == inputUsuario.value && el.password == inputPassword.value)
+        if(usuarioEncontrado){
+            window.location.href = "../inicio.html";
+            localStorage.setItem("usuarioBienvenida", JSON.stringify(usuarioEncontrado.usuario));
+        }else{
+            Toastify({
+                text: "Algo salio mal, intenta nuevamente",
+                className: "info",
+                style: {
+                background: "#FF0000",
+                }
+            }).showToast();
         }
-        }).showToast();
     }else{
         Toastify({
             text: "Algo salio mal, intenta nuevamentenananan",
@@ -47,15 +48,16 @@ function login(){
             style: {
             background: "#FF0000",
             }
-            }).showToast();
+        }).showToast();
     }
 }
 
 
-
 function submit(event){
+
     event.preventDefault()
-    inputUsuarioRegistro.value && inputPasswordRegistro.value == inputConfirmPassword.value 
+
+    inputUsuarioRegistro.value && inputPasswordRegistro.value == inputConfirmPassword.value
     ?   crearCliente(Cliente)
     :   Toastify({
         text: "Algo salio mal, intenta nuevamente",
@@ -67,6 +69,7 @@ function submit(event){
 }
 
 function crearCliente(){
+    let clientes =  JSON.parse(localStorage.getItem("misclientes")) ?? []
     user = new Cliente()
     user.usuario = inputUsuarioRegistro.value
     user.password = inputPasswordRegistro.value
