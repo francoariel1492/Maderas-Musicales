@@ -162,7 +162,7 @@ function pagoEfectivo() {
   envioDetallesDeCompra();
   setTimeout(() => {
     window.location.href = "../inicio.html";
-  }, 2000);
+  }, 2222);
 }
 
 //------Se calculan el total de cada cuota seleccionada y el precio con interes final, de nuevo se actualizan
@@ -181,7 +181,7 @@ function calcularTotal() {
   envioDetallesDeCompra();
   setTimeout(() => {
     window.location.href = "../inicio.html";
-  }, 2000);
+  }, 2222);
 }
 
 //---------Se actualiza el modal para realizar el pago con tarjeta

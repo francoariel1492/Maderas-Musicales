@@ -179,7 +179,7 @@ function pagoEfectivo() {
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal));
   setTimeout(() => {
     window.location.href = "../inicio.html";
-  }, 2000);
+  }, 2222);
   envioDetallesDeCompra();
 
 }
