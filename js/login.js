@@ -32,7 +32,7 @@ function login() {
     let usuarioEncontrado = misClientesLocal.find((el) => el.usuario == inputUsuario.value && el.password == inputPassword.value
     );
     if (usuarioEncontrado) {
-      window.location.href = "../inicio.html";
+      window.location.href = "inicio.html";
       localStorage.setItem("usuarioBienvenida",JSON.stringify(usuarioEncontrado.usuario)
       );
     } else {
