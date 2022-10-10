@@ -3,6 +3,7 @@
 let misClientesLocal = JSON.parse(localStorage.getItem("misclientes"))
 let usuarioElegido = misClientesLocal.find(el => el.usuario == JSON.parse(localStorage.getItem("usuarioBienvenida")))
 
+
 //------------Variables
 
 const lpinfo = document.querySelector('#lpinfo');
@@ -15,11 +16,13 @@ const lesPaul = document.querySelector('#lp');
 const stratoCaster = document.querySelector('#strato');
 const teleCaster = document.querySelector('#tele');
 
+
 let colores = document.querySelector('#coloresLp');
 let pickups = document.querySelector('#pickupslp');
 let guitarraDefault;
 let guitarraPrecio;
 let precioGuitarra = 0
+let guitarra
 let changuito = document.querySelector("#changuitoContainer");
 let botonPagar = document.querySelector("#botonPagar");
 
@@ -63,16 +66,17 @@ let guitarras = [
 
 function lp(){
     lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center";
+    lesPaul.className = "d-none"
 }
 
 function strato(){
     stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center";
-    
+    stratoCaster.className = "d-none"
 }
 
 function tele(){
     teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center";
-    
+    teleCaster.className = "d-none"
 }
 
 function miLp(){
@@ -99,7 +103,7 @@ function miTele(){
 
 function setearGuitarra(){
   let guitarraInicial = guitarras.find((g) => g.tipo === guitarraDefault);
-  let guitarra = {}
+  guitarra = {}
   Object.assign(guitarra,guitarraInicial)
   guitarra.precio = guitarraPrecioFinal(guitarra.precio,parseInt(colores.value),parseInt(pickups.value))
   precioGuitarra += guitarra.precio
@@ -144,7 +148,7 @@ function pagoEfectivo(){
     title: 'Gracias por tu compra, nuestro tiempo estimado de construccion es de 3 meses, ante cualquier cambio te contactaremos para mas informacion.',
     showConfirmButton: false,
     timer: 5000})
-  usuarioElegido.total += guitarra.precio
+  usuarioElegido.total += usuarioElegido.guitarrasPrecio
   usuarioElegido.guitarrasPrecio = precioGuitarra
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
 }
@@ -152,12 +156,9 @@ function pagoEfectivo(){
 function calcularTotal(){
   let totalCuotas = (usuarioElegido.guitarrasPrecio / cuotas.value) * 1.10
   totalCuotas = totalCuotas.toFixed(2)
-  console.log(totalCuotas)
   usuarioElegido.guitarras = guitarrasCompradas
   usuarioElegido.guitarrasPrecio = parseFloat((usuarioElegido.guitarrasPrecio * 1.10).toFixed(2))
   usuarioElegido.total += usuarioElegido.guitarrasPrecio
-  console.log(usuarioElegido.guitarrasPrecio)
-  console.log(usuarioElegido.total)
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal))
   changuito.innerHTML = `<h5>Te quedarian ${cuotas.value} de ${totalCuotas}</h5>Iniciaremos con los cortes que seleccionaste y te llamaremos cuando esten listos!`
 }
@@ -187,6 +188,8 @@ function vaciarChanguito(){
   botonPagar.className = "d-none" 
   changuito.textContent = " "
 }
+
+
 
 let boton = document.querySelector(".agregarCarrito")
 boton.addEventListener("click", agregarChanguito)
