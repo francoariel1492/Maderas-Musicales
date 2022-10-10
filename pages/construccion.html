@@ -27,7 +27,6 @@
   >
   <header class="row p-3 m-3">
     <nav class="navbar navbar-expand-md px-3">
-      <!-- <div class="container-fluid"> -->
       <a
         class="d-none d-md-block col-3 col-sm-2 col-md-2 col-lg-1 navbar-brand w-25 container animate__animated animate__swing"
         href="../inicio.html"
@@ -50,18 +49,9 @@
           <a class="nav-link active" href="maderas.html">Maderas</a>
           <a class="nav-link active" href="construccion.html">Construccion</a>
           <a class="nav-link active" href="escuela.html">Escuela</a>
+          <a class="nav-link active d-md-none" data-bs-toggle="modal" data-bs-target="#exampleModal">Mis ordenes</a>
         </div>
       </div>
-      <!-- </div> -->
-      <button
-      type="button"
-      class="col-3 col-sm-2 col-md-2 col-lg-1 btn border-0 w-25"
-      data-bs-toggle="modal"
-      data-bs-target="#exampleModal"
-      
-    >
-      <img src="../css/img/logo/chango.png"  class="img-fluid col-md-6 col-lg-3" alt="" />
-    </button>
     <div
       class="modal fade"
       id="exampleModal"
@@ -91,8 +81,17 @@
           </div>
         </div>
       </div>
+      
     </div>
+    <a
+    type="button"
+    class="d-none d-md-block navbar-brand col-3 col-sm-2 col-md-2 col-lg-1 btn border-0 w-25"
+    data-bs-toggle="modal"
+    data-bs-target="#exampleModal">
+    <img src="../css/img/logo/chango.png"  class="navbar-brand img-fluid col-md-6 col-lg-3" alt=""/>
+    </a>
     </nav>
+
   </header>
       <main class="row py-5 d-flex flex-column justify-content-center">
         <h1 class="display-1">Construimos tu sueño</h1>
@@ -103,13 +102,13 @@
         <div
           class="d-flex flex-column align-items-center py-3"
         >
-          <a class="btn btn-lg text-warning bg-dark" id="lp" role="button"
+          <a class="btn btn-lg col-6 col-sm-6 col-md-4 col-lg-2 text-warning bg-dark" id="lp" role="button"
             >Les paul</a
           >
           <div class="d-none" id="lpinfo">
             <img
               role
-              class="w-50 my-3 py-3"
+              class="w-75 my-3 py-3"
               src="../css/img/guitarras/lespaul.png"
               alt=""
             />
@@ -140,22 +139,21 @@
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark agregarCarrito" id="comprarLp" role="button"
+            <a class="btn btn-lg col-6 col-sm-6 col-md-4 col-lg-2 text-warning bg-dark agregarCarrito" id="comprarLp" role="button"
             >Comprar</a
           >
-          <p class="lead" ></p>
           </div>
         </div>
         <div
           class="d-flex flex-column justify-content-center align-items-center py-3"
         >
-          <a class="btn btn-lg text-warning bg-dark" id="strato" role="button"
+          <a class="btn btn-lg col-6 col-sm-6 col-md-4 col-lg-2 text-warning bg-dark" id="strato" role="button"
             >Stratocaster</a
           >
           <div class="d-none" id="stratinfo">
             <img
               role
-              class="w-50 my-3 py-3"
+              class="w-75 my-3 py-3"
               src="../css/img/guitarras/strato.png"
               alt=""
             />
@@ -185,21 +183,20 @@
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark agregarCarrito" id="comprarStrato" role="button"
+            <a class="btn btn-lg col-6 col-sm-6 col-md-4 col-lg-2 text-warning bg-dark agregarCarrito" id="comprarStrato" role="button"
             >Comprar</a>
-            <p class="lead" ></p>
           </div>
         </div>
         <div
           class="d-flex flex-column justify-content-center align-items-center py-3"
         >
-          <a class="btn btn-lg text-warning bg-dark" id="tele" role="button"
+          <a class="btn btn-lg col-6 col-sm-6 col-md-4 col-lg-2 text-warning bg-dark" id="tele" role="button"
             >Telecaster</a
           >
           <div class="d-none" id="teleinfo">
             <img
               role
-              class="w-50 my-3 py-3"
+              class="w-75 my-3 py-3"
               src="../css/img/guitarras/tele.png"
               alt=""
             />
@@ -229,9 +226,8 @@
               </select>
               
             </div>
-            <a class="btn btn-lg text-warning bg-dark agregarCarrito" id="comprarTele"  role="button"
+            <a class="btn btn-lg col-6 col-sm-6 col-md-4 col-lg-2 text-warning bg-dark agregarCarrito" id="comprarTele"  role="button"
             >Comprar</a>
-            <p class="lead" ></p>
           </div>
         </div>
         <div id="detallesCompra"></div>

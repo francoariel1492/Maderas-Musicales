@@ -20,7 +20,7 @@ let user;
 function signIn(event) {
   event.preventDefault();
   formLogIn.className = "d-none";
-  formRegistro.className = "row w-25 justify-content-center";
+  formRegistro.className = "col-10 col-sm-6 col-md-4 col-lg-3";
 }
 
 //------la funcion login chequea en los usuario registrados y los compara con los input ingresados

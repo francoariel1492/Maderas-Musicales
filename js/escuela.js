@@ -10,7 +10,7 @@ fetch("../data.json")
   .then((resp) => resp.json())
   .then((data) => {
     for (let i = 0; i < data.length; i++) {
-      cursos.innerHTML += `<div class="card bg-dark p-1 m-1" style="width: 17rem;">
+      cursos.innerHTML += `<div class="card bg-dark p-2 m-2" style="width: 15rem;">
                           <img src="../css/img/escuela/${data[i].imagen}" class="card-img-top" alt="card${data[i].id}">
                           <div class="card-body">
                           <h5 class="align-self-center">${data[i].curso}</h5>

@@ -170,7 +170,7 @@ function pagoEfectivo() {
     position: "center",
     icon: "success",
     title:
-      "Gracias por tu compra, nuestro tiempo estimado de construccion es de 3 meses, ante cualquier cambio te contactaremos para mas informacion.",
+      "Gracias por tu compra, nuestro tiempo estimado de construccion es de 3 meses.",
     showConfirmButton: false,
     timer: 5000,
   });
@@ -197,7 +197,7 @@ function calcularTotal() {
   envioDetallesDeCompra();
   setTimeout(() => {
     window.location.href = "../inicio.html";
-  }, 2000);
+  }, 2222);
 }
 
 //---------Se actualiza el modal para realizar el pago con tarjeta
@@ -260,7 +260,9 @@ function envioDetallesDeCompra() {
     }\n`;
   }
 
-  detallesGuitarras.textContent += `\nEl total es $${usuarioElegido.guitarrasPrecio}\n\nGracias por confiar en Maderas Musicales`;
+  detallesGuitarras.textContent += `\nEl total es $${usuarioElegido.guitarrasPrecio}\n\n
+Recorda que nuestro tiempo estimado de construccion es de 3 meses, cualquier consulta acercate al taller o contactanos
+  \n\nGracias por confiar en Maderas Musicales`;
   encodeURI(detallesGuitarras);
 
   let clicks = 1;
