@@ -82,7 +82,7 @@ function crearCliente() {
   user.total = 0;
   clientes.push(user);
   clientes.forEach((user, i) => {user.id = i;});
-  formLogIn.className = "row w-25 justify-content-center";
+  formLogIn.className = "col-10 col-sm-6 col-md-4 col-lg-3";
   formRegistro.className = "d-none";
   localStorage.setItem("misclientes", JSON.stringify(clientes));
 }
