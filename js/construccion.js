@@ -27,6 +27,7 @@ let guitarraPrecio;
 let precioGuitarra = 0;
 let guitarra;
 
+let clicks
 //------------Eventos
 
 comprarLp.addEventListener("click", miLp);
@@ -142,9 +143,7 @@ function setearGuitarra() {
 
 //------------Function con parametros para calcular el precio final de la guitarra
 
-function guitarraPrecioFinal(g, c, p) {
-  return g + c + p;
-}
+const guitarraPrecioFinal = (g,c,p) => g + c + p;
 
 // ----------Al darle pagar se realizan modificaciones en el modal para continuar con las diferentes formas de pago
 
@@ -267,11 +266,13 @@ Recorda que nuestro tiempo estimado de construccion es de 3 meses, cualquier con
 
   let clicks = 1;
 
-  function addClick() {
-    document.querySelector(".total-clicks").textContent = clicks;
-  }
-  function clickButton() {
-    document.querySelector("#btn1").click();
-  }
   setTimeout(clickButton, 1000);
 }
+// function addClick() {
+//   document.querySelector(".total-clicks").textContent = clicks;
+// }
+// function clickButton() {
+//   document.querySelector("#btn1").click();
+// }
+const addClick = () => document.querySelector(".total-clicks").textContent = clicks;
+const clickButton = () => document.querySelector("#btn1").click();

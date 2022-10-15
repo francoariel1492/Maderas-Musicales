@@ -15,6 +15,8 @@ let precioTotal = 0;
 let totalCuotas = 0;
 let precioConInteres = 0;
 
+let clicks
+
 //precios maderas
 
 let ebanoPrecio = 100;
@@ -222,16 +224,12 @@ function envioDetallesDeCompra() {
   detallesMaderas.textContent += `\nEl total es $${usuarioElegido.maderasPrecios}\n\nGracias por confiar en Maderas Musicales`;
   encodeURI(detallesMaderas);
 
-  let clicks = 1;
-
-  function addClick() {
-    document.querySelector(".total-clicks").textContent = clicks;
-  }
-  function clickButton() {
-    document.querySelector("#btn1").click();
-  }
+  clicks = 1;
   setTimeout(clickButton, 1000);
 }
+
+const addClick = () => document.querySelector(".total-clicks").textContent = clicks;
+const clickButton = () => document.querySelector("#btn1").click();
 
 //-----Se lanza una notificacion asincrona informando de un descuento el proximo blackfriday
 

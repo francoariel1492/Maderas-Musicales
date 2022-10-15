@@ -17,11 +17,13 @@ let user;
 //--------Funciones
 
 //------Se utiliza la funcion signIn para ocultar el formulario de log in y mostrar el de registro
-function signIn(event) {
+
+const signIn = (event) => {  
   event.preventDefault();
   formLogIn.className = "d-none";
   formRegistro.className = "col-10 col-sm-6 col-md-4 col-lg-3";
 }
+
 
 //------la funcion login chequea en los usuario registrados y los compara con los input ingresados
 //------usuario y password, muestra alerts si alguno o ambos faltan, o si son incorrectos
