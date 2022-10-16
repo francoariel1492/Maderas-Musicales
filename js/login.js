@@ -21,7 +21,7 @@ let user;
 const signIn = (event) => {  
   event.preventDefault();
   formLogIn.className = "d-none";
-  formRegistro.className = "col-10 col-sm-6 col-md-4 col-lg-3";
+  formRegistro.className = "animate__animated animate__fadeIn col-10 col-sm-6 col-md-4 col-lg-3";
 }
 
 
@@ -84,7 +84,7 @@ function crearCliente() {
   user.total = 0;
   clientes.push(user);
   clientes.forEach((user, i) => {user.id = i;});
-  formLogIn.className = "col-10 col-sm-6 col-md-4 col-lg-3";
+  formLogIn.className = "animate__animated animate__fadeIn col-10 col-sm-6 col-md-4 col-lg-3";
   formRegistro.className = "d-none";
   localStorage.setItem("misclientes", JSON.stringify(clientes));
 }
