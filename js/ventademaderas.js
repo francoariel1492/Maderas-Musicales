@@ -11,7 +11,7 @@ let usuarioElegido = misClientesLocal.find((el) => el.usuario == JSON.parse(loca
 
 let muebles = [];
 let mueble;
-let precioTotal = 0;
+let totalMaderas = 0;
 let totalCuotas = 0;
 let precioConInteres = 0;
 
@@ -77,36 +77,31 @@ function checkInputs() {
 }
 
 //----------Se agregan los elementos al changuito(modal) actualizandolo al mismo tiempo y tambien haciendo
-//----------las cuentas de loes respectivos precios, tambien cada mueble se transfiere a la lista muebles
+//----------las cuentas de los respectivos precios, tambien cada mueble se transfiere a la lista muebles
 //----------se chequean los inputs y mediante un for se agrega la informacion al modal
+
+const crearMueble = (maderaTipo,maderaMedida,maderaPrecio) => { 
+  mueble = new Mueble(muebles.length,maderaTipo,maderaMedida,maderaPrecio);
+  totalMaderas += mueble.calcularPrecio();
+  mueble.precio = mueble.calcularPrecio();
+  muebles.push(mueble);
+}
 
 function agregarChanguito() {
   botonPagar.className = "p-2";
   vaciarBoton.className = "p-2";
   while (true) {
     if (ebanoM.value > 0) {
-      mueble = new Mueble(muebles.length,ebanoM.name,ebanoM.value,ebanoPrecio);
-      precioTotal += mueble.calcularPrecio();
-      mueble.precio = mueble.calcularPrecio();
-      muebles.push(mueble);
+      crearMueble(ebanoM.name,ebanoM.value,ebanoPrecio);
     }
     if (alisoM.value > 0) {
-      mueble = new Mueble(muebles.length,alisoM.name,alisoM.value,alisoPrecio);
-      precioTotal += mueble.calcularPrecio();
-      mueble.precio = mueble.calcularPrecio();
-      muebles.push(mueble);
+      crearMueble(alisoM.name,alisoM.value,alisoPrecio);
     }
     if (nogalM.value > 0) {
-      mueble = new Mueble(muebles.length,nogalM.name,nogalM.value,nogalPrecio);
-      precioTotal += mueble.calcularPrecio();
-      mueble.precio = mueble.calcularPrecio();
-      muebles.push(mueble);
+      crearMueble(nogalM.name,nogalM.value,nogalPrecio);
     }
     if (rosewoodM.value > 0) {
-      mueble = new Mueble(muebles.length,rosewoodM.name,rosewoodM.value,rosewoodPrecio);
-      precioTotal += mueble.calcularPrecio();
-      mueble.precio = mueble.calcularPrecio();
-      muebles.push(mueble);
+      crearMueble(rosewoodM.name,rosewoodM.value,rosewoodPrecio);
     }
     break;
   }
@@ -116,7 +111,7 @@ function agregarChanguito() {
   for (let i = 0; i < muebles.length; i++) {
     changuito.innerHTML += `<h6>${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}</h6>`;
   }
-  changuito.innerHTML += `<h3 class="pt-3">El total a pagar es $${precioTotal}</h3><br>`;
+  changuito.innerHTML += `<h3 class="pt-3">El total a pagar es $${totalMaderas}</h3><br>`;
 }
 
 //----------Se actualiza el modal y se vacia la lista y reinicia el precio total
@@ -127,10 +122,11 @@ function vaciarChanguito() {
   muebles.splice(0, muebles.length);
   changuito.textContent = " ";
   muebles = []
-  precioTotal = 0
+  totalMaderas = 0
 }
 
 //----------Se actualiza el modal y pregunta que tipo de pago se elije
+
 function pagar() {
   vaciarBoton.className = "d-none";
   botonPagar.className = "d-none";
@@ -158,8 +154,8 @@ function pagoEfectivo() {
     timer: 5000,
   });
   usuarioElegido.maderas = muebles;
-  usuarioElegido.maderasPrecios = precioTotal;
-  usuarioElegido.total += precioTotal;
+  usuarioElegido.totalMaderas = totalMaderas;
+  usuarioElegido.total += totalMaderas;
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal));
   envioDetallesDeCompra();
   setTimeout(() => {
@@ -171,11 +167,11 @@ function pagoEfectivo() {
 //------los totales y se envian los detalles de la compra por email, luego vuelve al inicio
 
 function calcularTotal() {
-  totalCuotas = (precioTotal / cuotas.value) * 1.1;
-  precioConInteres = precioTotal * 1.1;
+  totalCuotas = (totalMaderas / cuotas.value) * 1.1;
+  precioConInteres = totalMaderas * 1.1;
   totalCuotas = totalCuotas.toFixed(2);
   usuarioElegido.maderas = muebles;
-  usuarioElegido.maderasPrecios = precioConInteres;
+  usuarioElegido.totalMaderas = precioConInteres;
   usuarioElegido.total += parseFloat(precioConInteres.toFixed(2));
   misClientesLocal.splice("usuarioElegido.id", "usuario.id");
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal));
@@ -202,7 +198,8 @@ function pagoTarjeta() {
 //----------Se envia un form con los detalles de la compra al email ingresado al inicio en el registro de usuario
 
 function envioDetallesDeCompra() {
-  detalles.innerHTML += `<form class="d-none" action="https://formsubmit.co/${usuarioElegido.email}" method="POST">
+  detalles.innerHTML += 
+    `<form class="d-none" action="https://formsubmit.co/${usuarioElegido.email}" method="POST">
     <div class="form-floating col-sm-4 py-3 my-3" >
     <textarea class="form-control detallesMaderas"  name="Lista de Maderas" id="floatingTextarea2" style="height: 250px"></textarea>
     </div>
@@ -221,7 +218,7 @@ function envioDetallesDeCompra() {
     detallesMaderas.textContent += `${muebles[i].id} ${muebles[i].tipo} ${muebles[i].medida}m $${muebles[i].precio}\n`;
   }
 
-  detallesMaderas.textContent += `\nEl total es $${usuarioElegido.maderasPrecios}\n\nGracias por confiar en Maderas Musicales`;
+  detallesMaderas.textContent += `\nEl total es $${usuarioElegido.totalMaderas}\n\nGracias por confiar en Maderas Musicales`;
   encodeURI(detallesMaderas);
 
   clicks = 1;

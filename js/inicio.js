@@ -44,14 +44,14 @@ if(clienteLogeado.guitarras){
     modalBody.innerHTML += `<h2 class="py-3">Guitarras</h2>`
     for (let i = 0; i < clienteLogeado.guitarras.length; i++) {
     modalBody.innerHTML += `<h6>${clienteLogeado.guitarras[i].tipo} - $${clienteLogeado.guitarras[i].precio}</h6>`}
-    modalBody.innerHTML += `<h3>Total de Guitarras - $${clienteLogeado.guitarrasPrecio}</h3>`
+    modalBody.innerHTML += `<h3>Total de Guitarras - $${clienteLogeado.totalGuitarras}</h3>`
     }
 
 if(clienteLogeado.maderas){
     modalBody.innerHTML += `<h2 class="py-3">Maderas</h2>`
     for (let i = 0; i < clienteLogeado.maderas.length; i++) {
         modalBody.innerHTML += `<h6>${clienteLogeado.maderas[i].id} - ${clienteLogeado.maderas[i].tipo} - ${clienteLogeado.maderas[i].medida} - $${clienteLogeado.maderas[i].precio}</h6>`}
-        modalBody.innerHTML += `<h3>Total de Maderas - $${clienteLogeado.maderasPrecios}</h3>`
+        modalBody.innerHTML += `<h3>Total de Maderas - $${clienteLogeado.totalMaderas}</h3>`
         }
 
 if(clienteLogeado.maderas && clienteLogeado.guitarras){

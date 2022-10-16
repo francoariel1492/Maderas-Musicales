@@ -1,14 +1,14 @@
 //------Se exporta y declara la clase Cliente utilizada en login para crear usuarios/clientes
 
 export class Cliente {
-    constructor(id, usuario, password, maderas,maderasPrecios, guitarras, guitarrasPrecio, total) {
+    constructor(id, usuario, password, maderas,totalMaderas, guitarras, totalGuitarras, total) {
         this.id = id;
         this.usuario = usuario;
         this.password = password;
         this.maderas = maderas;
-        this.maderasPrecios = maderasPrecios;
+        this.totalMaderas = totalMaderas;
         this.guitarras = guitarras;
-        this.guitarrasPrecio = guitarrasPrecio;
+        this.totalGuitarras = totalGuitarras;
         this.total = total;
         
     }
@@ -28,3 +28,20 @@ export class Mueble{
     }
 }
 
+//---- se exporta y declara la clase Guitarra utilizada en la parte de construccion
+
+export class Guitarra{
+    constructor(tipo,nombre,sonido,peso,precio){
+        this.tipo = tipo;
+        this.nombre = nombre;
+        this.sonido = sonido;
+        this.peso = peso;
+        this.precio = precio;
+    }
+}
+
+// tipo: "LP",
+// nombre: "Porteña",
+// sonido: "corposo",
+// peso: parseFloat(3.5),
+// precio: 1000,

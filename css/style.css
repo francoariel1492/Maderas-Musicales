@@ -41,7 +41,7 @@ header div a{
 .construccion main h1, h2, p{
     color:transparent;
     background: linear-gradient(351deg, rgba(255,235,205,1) 0%, rgba(93,70,50,1) 50%);
-    text-shadow: 1px 1px blanchedalmond;
+    text-shadow: 2px 1px blanchedalmond;
     -webkit-background-clip: text;
 }
 
@@ -51,6 +51,12 @@ header div a{
     background-position:center;
     background-attachment: fixed;
     color:blanchedalmond;
+}
+.escuela main h1, h2, p{
+    color:transparent;
+    background: linear-gradient(351deg, rgba(255,235,205,1) 0%, rgba(93,70,50,1) 50%);
+    text-shadow: 2px 1px blanchedalmond;
+    -webkit-background-clip: text;
 }
 
 .maderas{

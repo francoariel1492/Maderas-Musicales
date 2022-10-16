@@ -1,3 +1,7 @@
+//------Se importa la clase Guitarra
+
+import { Guitarra } from "../classes/clases.js";
+
 //----- LLamo el uusario del localStorage
 
 let misClientesLocal = JSON.parse(localStorage.getItem("misclientes"));
@@ -15,27 +19,16 @@ const lesPaul = document.querySelector("#lp");
 const stratoCaster = document.querySelector("#strato");
 const teleCaster = document.querySelector("#tele");
 const detalles = document.querySelector("#detalles");
-let colores = document.querySelector("#coloresLp");
-let pickups = document.querySelector("#pickupslp");
+
 let changuito = document.querySelector("#changuitoContainer");
 let botonPagar = document.querySelector("#botonPagar");
 
 //----------Variables Globales
 
-let guitarraDefault;
-let guitarraPrecio;
-let precioGuitarra = 0;
-let guitarra;
-
+let totalGuitarras = 0;
 let clicks
-//------------Eventos
-
-comprarLp.addEventListener("click", miLp);
-comprarStrato.addEventListener("click", miStrato);
-comprarTele.addEventListener("click", miTele);
-lesPaul.addEventListener("click", lp);
-stratoCaster.addEventListener("click", strato);
-teleCaster.addEventListener("click", tele);
+let colores
+let pickups 
 
 //------Botones
 
@@ -52,81 +45,62 @@ vaciarBoton.addEventListener("click", vaciarChanguito);
 
 let guitarrasCompradas = [];
 
-let guitarras = [
-  {
-    tipo: "LP",
-    nombre: "Porteña",
-    sonido: "corposo",
-    peso: parseFloat(3.5),
-    precio: 1000,
-  },
-  {
-    tipo: "Strato",
-    nombre: "Patagonia",
-    sonido: "cremoso",
-    peso: parseFloat(3.2),
-    precio: 900,
-  },
-  {
-    tipo: "Tele",
-    nombre: "Norteña",
-    sonido: "destellante",
-    peso: parseFloat(3.8),
-    precio: 800,
-  },
-];
+
+//---------------Guitarras en venta, vienen de la clase importada Guitarra
+
+const Lp = new Guitarra("LP","Porteña","Corposo",parseFloat(3.5),1000)
+const Strato = new Guitarra("Strato","Patagonia","Cremoso",parseFloat(3.2),900)
+const Tele = new Guitarra("Tele","Norteña","Destellante",parseFloat(3.8),800)
+
 
 //------------Funciones
 
 //------------Botones que abren las imagenes de las guitarras  
 
-function lp() {
-  lpinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center";
-  lesPaul.className = "d-none";
+
+const lp = () => {  
+      lpinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
+      lesPaul.className = "d-none";
+}
+const strato = () => {
+      stratinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
+      stratoCaster.className = "d-none";
 }
 
-function strato() {
-  stratinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center";
-  stratoCaster.className = "d-none";
-}
-
-function tele() {
-  teleinfo.className = "w-75 py-5 d-flex flex-column justify-content-center align-items-center";
+const tele = () => {
+  teleinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
   teleCaster.className = "d-none";
 }
 
 //------------ Se define la guitarra Default con sus respectivos colores y pickups
 
 function miLp() {
-  guitarraDefault = "LP";
   colores = document.querySelector("#coloresLp");
   pickups = document.querySelector("#pickupslp");
-  setearGuitarra();
+  setearGuitarra(Lp);
 }
 
 function miStrato() {
-  guitarraDefault = "Strato";
   colores = document.querySelector("#coloresStrato");
   pickups = document.querySelector("#pickupsStrato");
-  setearGuitarra();
+  setearGuitarra(Strato);
 }
 
 function miTele() {
-  guitarraDefault = "Tele";
   colores = document.querySelector("#coloresTele");
   pickups = document.querySelector("#pickupsTele");
-  setearGuitarra();
+  setearGuitarra(Tele);
 }
 
 //------------Se setea la guitarra al darle al boton comprar, se agrega al array guitarrasCompradas
 //y se actualizan los precios, se agrega al changuito(modal), lanza el toastify
 
-function setearGuitarra() {
-  let guitarraInicial = guitarras.find((g) => g.tipo === guitarraDefault);
+function setearGuitarra(guitarSelected) {
+  let guitarra;
   guitarra = {};
-  Object.assign(guitarra, guitarraInicial);
+  Object.assign(guitarra,guitarSelected)
   guitarra.precio = guitarraPrecioFinal(guitarra.precio,parseInt(colores.value),parseInt(pickups.value));
-  precioGuitarra += guitarra.precio;
+  totalGuitarras += guitarra.precio;
   guitarrasCompradas.push(guitarra);
   usuarioElegido.guitarras = guitarrasCompradas;
   agregarChanguito();
@@ -138,12 +112,11 @@ function setearGuitarra() {
       color: "#000000",
     },
   }).showToast();
-  return guitarra;
 }
 
 //------------Function con parametros para calcular el precio final de la guitarra
 
-const guitarraPrecioFinal = (g,c,p) => g + c + p;
+const guitarraPrecioFinal = (gPrecio,color,pickups) => gPrecio + color + pickups;
 
 // ----------Al darle pagar se realizan modificaciones en el modal para continuar con las diferentes formas de pago
 
@@ -173,24 +146,24 @@ function pagoEfectivo() {
     showConfirmButton: false,
     timer: 5000,
   });
-  usuarioElegido.total += usuarioElegido.guitarrasPrecio;
-  usuarioElegido.guitarrasPrecio = precioGuitarra;
+  usuarioElegido.total += totalGuitarras;
+  usuarioElegido.totalGuitarras = totalGuitarras;
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal));
   setTimeout(() => {
     window.location.href = "../inicio.html";
   }, 2222);
   envioDetallesDeCompra();
-
 }
 
 //------Se calculan el total de cada cuota seleccionada y el precio con interes final, de nuevo se actualizan
 //------los totales y se envian los detalles de la compra por email, luego vuelve al inicio
 function calcularTotal() {
-  let totalCuotas = (usuarioElegido.guitarrasPrecio / cuotas.value) * 1.1;
+  let totalCuotas = (totalGuitarras / cuotas.value) * 1.1;
   totalCuotas = totalCuotas.toFixed(2);
   usuarioElegido.guitarras = guitarrasCompradas;
-  usuarioElegido.guitarrasPrecio = parseFloat((usuarioElegido.guitarrasPrecio * 1.1).toFixed(2));
-  usuarioElegido.total += usuarioElegido.guitarrasPrecio;
+  totalGuitarras = parseFloat((totalGuitarras * 1.1).toFixed(2));
+  usuarioElegido.totalGuitarras = totalGuitarras
+  usuarioElegido.total += totalGuitarras;
   localStorage.setItem("misclientes", JSON.stringify(misClientesLocal));
   changuito.innerHTML = `<h5>Te quedarian ${cuotas.value} de ${totalCuotas}</h5>Iniciaremos con los cortes que seleccionaste y te llamaremos cuando esten listos!`;
   envioDetallesDeCompra();
@@ -213,26 +186,28 @@ function pagoTarjeta() {
 }
 
 //-----------Se agrega al changuito(modal) las guitarras y el precio total de la compra
+
 function agregarChanguito() {
   vaciarBoton.className = "p-2";
   botonPagar.className = "p-2";
-  usuarioElegido.guitarrasPrecio = precioGuitarra;
   changuito.innerHTML = "";
   for (let i = 0; i < guitarrasCompradas.length; i++) {
     changuito.innerHTML += `<h6>${i + 1} ${guitarrasCompradas[i].tipo} $${guitarrasCompradas[i].precio}</h6>`;
   }
-  changuito.innerHTML += `<h3 class="pt-3">El total a pagar es $${usuarioElegido.guitarrasPrecio}</h3><br>`;
+  changuito.innerHTML += `<h3 class="pt-3">El total a pagar es $${totalGuitarras}</h3><br>`;
 }
 
 //----------Al vaciar el changuito vuelve actualiza el modal, vacia el array de guitarras compradas y
 //---------- me deja los precios en 0
+
 function vaciarChanguito() {
   vaciarBoton.className = "d-none";
   botonPagar.className = "d-none";
   changuito.textContent = " ";
   guitarrasCompradas = [];
-  usuarioElegido.guitarrasPrecio = 0
-  precioGuitarra = 0
+  totalGuitarras = 0
+  usuarioElegido.totalGuitarras = 0
+  
 }
 
 //----------Se envia un form con los detalles de la compra al email ingresado al inicio en el registro de usuario
@@ -259,8 +234,8 @@ function envioDetallesDeCompra() {
     }\n`;
   }
 
-  detallesGuitarras.textContent += `\nEl total es $${usuarioElegido.guitarrasPrecio}\n\n
-Recorda que nuestro tiempo estimado de construccion es de 3 meses, cualquier consulta acercate al taller o contactanos
+  detallesGuitarras.textContent += `\nEl total es $${usuarioElegido.totalGuitarras}\n\n
+  Recorda que nuestro tiempo estimado de construccion es de 3 meses, cualquier consulta acercate al taller o contactanos
   \n\nGracias por confiar en Maderas Musicales`;
   encodeURI(detallesGuitarras);
 
@@ -268,11 +243,16 @@ Recorda que nuestro tiempo estimado de construccion es de 3 meses, cualquier con
 
   setTimeout(clickButton, 1000);
 }
-// function addClick() {
-//   document.querySelector(".total-clicks").textContent = clicks;
-// }
-// function clickButton() {
-//   document.querySelector("#btn1").click();
-// }
+
+
 const addClick = () => document.querySelector(".total-clicks").textContent = clicks;
 const clickButton = () => document.querySelector("#btn1").click();
+
+//------------Eventos
+
+comprarLp.addEventListener("click", miLp);
+comprarStrato.addEventListener("click", miStrato);
+comprarTele.addEventListener("click", miTele);
+lesPaul.addEventListener("click", lp);
+stratoCaster.addEventListener("click", strato);
+teleCaster.addEventListener("click", tele);
