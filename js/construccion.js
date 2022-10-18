@@ -59,12 +59,12 @@ const Tele = new Guitarra("Tele","Norteña","Destellante",parseFloat(3.8),800)
 
 
 const lp = () => {  
-      lpinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
-      lesPaul.className = "d-none";
+  lpinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
+  lesPaul.className = "d-none";
 }
 const strato = () => {
-      stratinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
-      stratoCaster.className = "d-none";
+  stratinfo.className = "animate__animated animate__fadeIn w-75 py-5 d-flex flex-column justify-content-center align-items-center";
+  stratoCaster.className = "d-none";
 }
 
 const tele = () => {

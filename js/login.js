@@ -24,6 +24,17 @@ const signIn = (event) => {
   formRegistro.className = "animate__animated animate__fadeIn col-10 col-sm-6 col-md-4 col-lg-3";
 }
 
+//-------Toastify function para ahorrar codigo
+
+const toastAlert = () => {    
+  Toastify({
+    text: "Algo salio mal, intenta nuevamentenananan",
+    className: "info",
+    style: {
+      background: "#FF0000",
+    },
+  }).showToast();
+}
 
 //------la funcion login chequea en los usuario registrados y los compara con los input ingresados
 //------usuario y password, muestra alerts si alguno o ambos faltan, o si son incorrectos
@@ -38,39 +49,25 @@ function login() {
       localStorage.setItem("usuarioBienvenida",JSON.stringify(usuarioEncontrado.usuario)
       );
     } else {
-      Toastify({
-        text: "Algo salio mal, intenta nuevamente",
-        className: "info",
-        style: {
-          background: "#FF0000",
-        },
-      }).showToast();
+      toastAlert();
     }
   } else {
-    Toastify({
-      text: "Algo salio mal, intenta nuevamentenananan",
-      className: "info",
-      style: {
-        background: "#FF0000",
-      },
-    }).showToast();
+    toastAlert();
   }
 }
+
+
+
+
 
 //-------Se verifica que los datos sean correctos para poder finalmente crear el cliente/usuario
 
 function submit(event) {
   event.preventDefault();
-
+  
   inputUsuarioRegistro.value && inputPasswordRegistro.value == inputConfirmPassword.value
     ? crearCliente(Cliente)
-    : Toastify({
-        text: "Algo salio mal, intenta nuevamente",
-        className: "info",
-        style: {
-          background: "#FF0000",
-        },
-      }).showToast();
+    : toastAlert()
 }
 
 //--------Se crea el cliente se llama a los clientes del local storage para poder sumarlos a la lista, se 

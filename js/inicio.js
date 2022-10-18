@@ -28,35 +28,35 @@ cerrarSesion.addEventListener('click',() => localStorage.removeItem('usuarioBien
 bienvenida.innerHTML += `Bienvenido ${cliente}`
 
 
+//-------Desestructuracion de variables clienteLogeado
+
+const{guitarras,totalGuitarras,maderas,totalMaderas,usuario,total} = clienteLogeado
 
 
-
-//------ Se chequea que el cliente sea el mismo que el clienteLogeado, luego se chequea si hay guitarras
+//------ Se chequea que el cliente sea el mismo que el usuario  clienteLogeado, luego se chequea si hay guitarras
 //------compradas o maderas para asi actualizar el modal y mostrar una o ambas, si hay ambas se muestra el total
 //------de la compra
-if(cliente == JSON.stringify(clienteLogeado.usuario)){
-clienteLogeado.guitarras || clienteLogeado.maderas
+if(cliente == JSON.stringify(usuario)){
+guitarras || maderas
 ? orders.addEventListener('click', () =>{
     modalBody.innerHTML = ""
-    
-
-if(clienteLogeado.guitarras){
-    modalBody.innerHTML += `<h2 class="py-3">Guitarras</h2>`
-    for (let i = 0; i < clienteLogeado.guitarras.length; i++) {
-    modalBody.innerHTML += `<h6>${clienteLogeado.guitarras[i].tipo} - $${clienteLogeado.guitarras[i].precio}</h6>`}
-    modalBody.innerHTML += `<h3>Total de Guitarras - $${clienteLogeado.totalGuitarras}</h3>`
-    }
-
-if(clienteLogeado.maderas){
-    modalBody.innerHTML += `<h2 class="py-3">Maderas</h2>`
-    for (let i = 0; i < clienteLogeado.maderas.length; i++) {
-        modalBody.innerHTML += `<h6>${clienteLogeado.maderas[i].id} - ${clienteLogeado.maderas[i].tipo} - ${clienteLogeado.maderas[i].medida} - $${clienteLogeado.maderas[i].precio}</h6>`}
-        modalBody.innerHTML += `<h3>Total de Maderas - $${clienteLogeado.totalMaderas}</h3>`
+    if(guitarras){
+        modalBody.innerHTML += `<h2 class="py-3">Guitarras</h2>`
+        for (let i = 0; i < guitarras.length; i++) {
+        modalBody.innerHTML += `<h6>${guitarras[i].tipo} - $${guitarras[i].precio}</h6>`}
+        modalBody.innerHTML += `<h3>Total de Guitarras - $${totalGuitarras}</h3>`
         }
 
-if(clienteLogeado.maderas && clienteLogeado.guitarras){
-    modalBody.innerHTML += `<h2 class="pt-3">Total - $${clienteLogeado.total}</h2>`
-}
+    if(maderas){
+        modalBody.innerHTML += `<h2 class="py-3">Maderas</h2>`
+        for (let i = 0; i < maderas.length; i++) {
+            modalBody.innerHTML += `<h6>${maderas[i].id} - ${maderas[i].tipo} - ${maderas[i].medida}m - $${maderas[i].precio}</h6>`}
+            modalBody.innerHTML += `<h3>Total de Maderas - $${totalMaderas}</h3>`
+            }
+
+    if(maderas && guitarras){
+        modalBody.innerHTML += `<h2 class="pt-3">Total - $${total}</h2>`
+    }
 })
 
 : orders.className = "d-none"
