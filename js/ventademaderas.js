@@ -42,6 +42,7 @@ let alisoM = document.querySelector("#alisoM");
 let nogalM = document.querySelector("#nogalM");
 let rosewoodM = document.querySelector("#rosewoodM");
 
+
 //------Botenes/Eventos
 
 let boton = document.querySelector("#agregarCarrito");
@@ -114,6 +115,7 @@ function agregarChanguito() {
   changuito.innerHTML += `<h3 class="pt-3">El total a pagar es $${totalMaderas}</h3><br>`;
 }
 
+
 //----------Se actualiza el modal y se vacia la lista y reinicia el precio total
 
 function vaciarChanguito() {
@@ -139,6 +141,8 @@ function pagar() {
   efectivo.addEventListener("click", pagoEfectivo);
   let tarjeta = document.querySelector("#Tarjeta");
   tarjeta.addEventListener("click", pagoTarjeta);
+
+
 }
 
 //-----Al realizar el pago en efectivo se dispara la notificacion de sweet alert, se actualizan los precios
